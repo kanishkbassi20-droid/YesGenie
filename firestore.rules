@@ -13,7 +13,7 @@ service cloud.firestore {
       return signedIn()
         && (
           request.auth.token.admin == true
-          || request.auth.token.email in ['kanishkbassi20@gmail.com']
+          || request.auth.token.email in ['kanishkbassi20@gmail.com', 'admindash@gmail.com']
         );
     }
 

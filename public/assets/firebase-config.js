@@ -10,7 +10,7 @@ window.YESGENIE_FIREBASE_CONFIG = {
 
 window.YESGENIE_POLICY_VERSION = "2026-05-23";
 
-window.YESGENIE_ADMIN_EMAILS = ["kanishkbassi20@gmail.com"];
+window.YESGENIE_ADMIN_EMAILS = ["kanishkbassi20@gmail.com", "admindash@gmail.com"];
 
 window.YESGENIE_LEGAL_LINKS = [
 	["/privacy-policy", "Privacy Policy"],
