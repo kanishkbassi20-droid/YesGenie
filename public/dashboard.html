@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<title>Dashboard | YesGenie</title>
+		<meta
+			name="description"
+			content="View your YesGenie profile and saved Make a Wish quiz details from your secure member dashboard."
+		/>
+		<meta name="theme-color" content="#070a11" />
+		<link rel="icon" type="image/png" href="assets/favicon.png?v=20260523" />
+		<link rel="apple-touch-icon" href="assets/favicon.png?v=20260523" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="assets/consent.css?v=20260523" />
+		<link rel="stylesheet" href="assets/dashboard.css?v=20260523" />
+	</head>
+	<body>
+		<header class="dashboard-nav">
+			<a class="brand" href="/" aria-label="YesGenie home">
+				<span class="brand__plate">
+					<img src="assets/yesgenie-logo.png" alt="YesGenie" />
+				</span>
+			</a>
+			<nav aria-label="Dashboard navigation">
+				<a href="/">Home</a>
+				<a href="/active-itineraries">Active Trips</a>
+				<a href="/#wish-quiz">Make a Wish</a>
+			</nav>
+		</header>
+
+		<main class="dashboard-page">
+			<section class="dashboard-hero">
+				<div class="container dashboard-hero__grid">
+					<div>
+						<div class="eyebrow">Member Dashboard</div>
+						<h1>Your travel wish, saved securely.</h1>
+						<p>
+							View your profile details, review your Make a Wish submission, and keep your saved travel preferences
+							within reach.
+						</p>
+					</div>
+					<div class="dashboard-status" id="dashboardStatus" role="status">
+						<span aria-hidden="true"></span>
+						<strong id="dashboardStatusText">Loading your secure dashboard...</strong>
+					</div>
+				</div>
+			</section>
+
+			<section class="dashboard-shell container" id="dashboardContent" aria-live="polite">
+				<div class="auth-required" id="authRequired">
+					<div class="auth-required__lamp" aria-hidden="true"></div>
+					<div>
+						<div class="eyebrow">Login Required</div>
+						<h2>Please sign in to view your dashboard.</h2>
+						<p>Your profile and wish data are private to your account.</p>
+					</div>
+					<a class="btn btn--primary" href="/login">Login to Continue</a>
+				</div>
+
+				<div class="dashboard-grid is-hidden" id="signedInDashboard">
+					<article class="dashboard-card">
+						<div class="card-head">
+							<div>
+								<span>Profile</span>
+								<h2>Your account details</h2>
+							</div>
+							<button class="btn btn--ghost" type="button" id="signOutBtn">Sign Out</button>
+						</div>
+						<div class="detail-list" id="profileDetails"></div>
+					</article>
+
+					<article class="dashboard-card dashboard-card--wish">
+						<div class="card-head">
+							<div>
+								<span>Saved Wish</span>
+								<h2>Make a Wish details</h2>
+							</div>
+							<a class="btn btn--primary" href="/#wish-quiz">Update Wish</a>
+						</div>
+						<div id="wishDetails"></div>
+					</article>
+				</div>
+			</section>
+		</main>
+
+		<footer class="legal-footer" aria-label="Legal footer">
+			<div class="legal-footer__inner">
+				<p>&copy; <span id="year"></span> YesGenie. Travel plans are confirmed subject to published terms.</p>
+				<nav class="legal-footer__links" aria-label="Legal links">
+					<a href="/privacy-policy">Privacy Policy</a>
+					<a href="/terms-and-conditions">Terms & Conditions</a>
+					<a href="/refund-cancellation-policy">Refund & Cancellation Policy</a>
+					<a href="/cookie-policy">Cookie Policy</a>
+					<a href="/contact-grievance-officer">Contact / Grievance Officer</a>
+				</nav>
+			</div>
+		</footer>
+
+		<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-auth-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore-compat.js"></script>
+		<script src="assets/firebase-config.js?v=20260523"></script>
+		<script src="assets/consent.js?v=20260523" defer></script>
+		<script src="assets/dashboard.js?v=20260523" defer></script>
+	</body>
+</html>

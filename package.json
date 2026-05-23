@@ -1,0 +1,19 @@
+{
+  "name": "yesgeniesite",
+  "version": "1.0.0",
+  "description": "## 1) Set your Firebase project",
+  "main": "index.js",
+  "scripts": {
+    "login": "cmd /c scripts\\\\firebase-login.cmd",
+    "deploy": "cmd /c scripts\\\\firebase-deploy.cmd"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "firebase-tools": "^15.18.0"
+  },
+  "dependencies": {
+    "firebase": "^12.13.0"
+  }
+}

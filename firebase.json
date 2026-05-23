@@ -1,0 +1,37 @@
+{
+	"hosting": {
+		"public": "public",
+		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+		"cleanUrls": true,
+		"headers": [
+			{
+				"source": "**/*.js",
+				"headers": [{ "key": "Cache-Control", "value": "public,max-age=300,must-revalidate" }]
+			},
+			{
+				"source": "**/*.css",
+				"headers": [{ "key": "Cache-Control", "value": "public,max-age=300,must-revalidate" }]
+			}
+		],
+		"redirects": [
+			{ "source": "/testimonials", "destination": "/", "type": 301 },
+			{ "source": "/testimonials/**", "destination": "/", "type": 301 }
+		],
+		"rewrites": [
+			{ "source": "/active-itineraries", "destination": "/active-itineraries.html" },
+			{ "source": "/bir-experience", "destination": "/bir-experience.html" },
+			{ "source": "/dashboard", "destination": "/dashboard.html" },
+			{ "source": "/login", "destination": "/login.html" },
+			{ "source": "/privacy-policy", "destination": "/privacy-policy.html" },
+			{ "source": "/terms-and-conditions", "destination": "/terms-and-conditions.html" },
+			{ "source": "/refund-cancellation-policy", "destination": "/refund-cancellation-policy.html" },
+			{ "source": "/cookie-policy", "destination": "/cookie-policy.html" },
+			{ "source": "/contact-grievance-officer", "destination": "/contact-grievance-officer.html" },
+			{ "source": "**", "destination": "/index.html" }
+		]
+	},
+	"firestore": {
+		"rules": "firestore.rules",
+		"indexes": "firestore.indexes.json"
+	}
+}

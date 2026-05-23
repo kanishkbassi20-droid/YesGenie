@@ -1,0 +1,28 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn() && request.auth.token.admin == true;
+    }
+
+    // Default: Deny all access
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+
+    // Public files - allow everyone to read
+    match /public/{allPaths=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // User uploads - authenticated users can read/write their own files
+    match /users/{userId}/{allPaths=**} {
+      allow read, write: if (signedIn() && request.auth.uid == userId) || isAdmin();
+    }
+  }
+}

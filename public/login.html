@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<title>Login | YesGenie</title>
+		<meta
+			name="description"
+			content="Log in or create your YesGenie account to save trips, manage waitlists, and access member-only group travel updates."
+		/>
+		<meta name="theme-color" content="#070a11" />
+		<link rel="icon" type="image/png" href="assets/favicon.png?v=20260521" />
+		<link rel="apple-touch-icon" href="assets/favicon.png?v=20260521" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="assets/consent.css?v=20260523" />
+		<link rel="stylesheet" href="assets/auth.css?v=20260523-legal-consent" />
+	</head>
+	<body>
+		<main class="auth-page">
+			<div class="auth-bg" aria-hidden="true">
+				<div class="auth-orbit auth-orbit--one"></div>
+				<div class="auth-orbit auth-orbit--two"></div>
+				<div class="auth-smoke auth-smoke--one"></div>
+				<div class="auth-smoke auth-smoke--two"></div>
+				<div class="auth-sparks"></div>
+			</div>
+
+			<section class="auth-shell" aria-label="YesGenie account access">
+				<a class="brand" href="/" aria-label="YesGenie home">
+					<span class="brand__plate">
+						<img src="assets/yesgenie-logo.png" alt="YesGenie" />
+					</span>
+				</a>
+
+				<div class="auth-copy">
+					<div class="eyebrow">Member Access</div>
+					<h1>Your YesGenie account, granted.</h1>
+					<p>
+						Log in, create an account, or reset your password from one dedicated space built for smooth trip access.
+					</p>
+					<p class="typing-line"><span id="authTypingText">Unlocking your trip space...</span><i aria-hidden="true"></i></p>
+				</div>
+
+				<section class="auth-card" aria-label="Login and account creation">
+					<div class="auth-card__lamp" aria-hidden="true"></div>
+					<div class="auth-card__smoke" aria-hidden="true"></div>
+
+					<div class="mode-tabs" role="tablist" aria-label="Choose account mode">
+						<button class="mode-tab is-active" type="button" data-mode="login" role="tab" aria-selected="true">Login</button>
+						<button class="mode-tab" type="button" data-mode="create" role="tab" aria-selected="false">Create</button>
+						<button class="mode-tab" type="button" data-mode="reset" role="tab" aria-selected="false">Reset</button>
+					</div>
+
+					<div class="auth-state" id="authState" role="status">
+						<span class="auth-state__dot" aria-hidden="true"></span>
+						<span id="authStateText">Ready for your email.</span>
+					</div>
+
+					<form class="auth-form" id="authForm">
+						<label class="field field--name" for="displayName">
+							<span>Full Name</span>
+							<input id="displayName" name="displayName" type="text" placeholder="Your name" autocomplete="name" />
+						</label>
+
+						<label class="field" for="email">
+							<span>Email</span>
+							<input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+						</label>
+
+						<label class="field field--password" for="password">
+							<span>Password</span>
+							<input
+								id="password"
+								name="password"
+								type="password"
+								placeholder="Minimum 6 characters"
+								autocomplete="current-password"
+							/>
+						</label>
+
+						<label class="field field--confirm" for="confirmPassword">
+							<span>Confirm Password</span>
+							<input
+								id="confirmPassword"
+								name="confirmPassword"
+								type="password"
+								placeholder="Re-enter password"
+								autocomplete="new-password"
+							/>
+						</label>
+
+						<div class="form-row field--session">
+							<label class="remember">
+								<input type="checkbox" id="remember" name="remember" checked />
+								<span>Keep me signed in</span>
+							</label>
+							<a href="#" id="inlineReset">Forgot password?</a>
+						</div>
+
+						<label class="legal-consent field--legal" for="legalConsent">
+							<input type="checkbox" id="legalConsent" name="legalConsent" />
+							<span>
+								I agree to the
+								<a href="/privacy-policy" target="_blank" rel="noreferrer noopener">Privacy Policy</a>,
+								<a href="/terms-and-conditions" target="_blank" rel="noreferrer noopener">Terms & Conditions</a>,
+								<a href="/refund-cancellation-policy" target="_blank" rel="noreferrer noopener">Refund & Cancellation Policy</a>,
+								and <a href="/cookie-policy" target="_blank" rel="noreferrer noopener">Cookie Policy</a>.
+							</span>
+						</label>
+
+						<button class="btn btn--primary" id="submitBtn" type="submit">Login</button>
+					</form>
+
+					<div class="signed-in-panel is-hidden" id="signedInPanel">
+						<div>
+							<div class="signed-in-panel__label">Signed in</div>
+							<h2 id="signedInTitle">Welcome back.</h2>
+							<p id="signedInEmail">Your YesGenie trip space is active.</p>
+						</div>
+						<div class="signed-in-panel__actions">
+							<a class="btn btn--primary" href="/dashboard">Open Dashboard</a>
+							<a class="btn btn--primary" href="/active-itineraries">View Trips</a>
+							<button class="btn btn--ghost" type="button" id="signOutBtn">Sign Out</button>
+						</div>
+					</div>
+
+					<p class="auth-note">
+						Passwords are handled by Firebase Auth. YesGenie does not store your password in the website code.
+					</p>
+				</section>
+			</section>
+		</main>
+
+		<footer class="legal-footer" aria-label="Legal footer">
+			<div class="legal-footer__inner">
+				<p>&copy; 2026 YesGenie. Secure account access is provided through Firebase Authentication.</p>
+				<nav class="legal-footer__links" aria-label="Legal links">
+					<a href="/privacy-policy">Privacy Policy</a>
+					<a href="/terms-and-conditions">Terms & Conditions</a>
+					<a href="/refund-cancellation-policy">Refund & Cancellation Policy</a>
+					<a href="/cookie-policy">Cookie Policy</a>
+					<a href="/contact-grievance-officer">Contact / Grievance Officer</a>
+				</nav>
+			</div>
+		</footer>
+
+		<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-auth-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore-compat.js"></script>
+		<script src="assets/firebase-config.js?v=20260523"></script>
+		<script src="assets/consent.js?v=20260523" defer></script>
+		<script src="assets/auth.js?v=20260523-legal-consent" defer></script>
+	</body>
+</html>

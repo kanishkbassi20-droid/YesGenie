@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<title>YesGenie | Premium Youth Group Travel</title>
+		<meta
+			name="description"
+			content="YesGenie curates premium youth-focused group journeys with guaranteed departures, age-specific communities, and unforgettable travel experiences."
+		/>
+		<meta name="theme-color" content="#070a11" />
+		<link rel="icon" type="image/png" href="assets/favicon.png?v=20260521" />
+		<link rel="apple-touch-icon" href="assets/favicon.png?v=20260521" />
+		<meta property="og:title" content="YesGenie | Your Travel Wish, Granted" />
+		<meta
+			property="og:description"
+			content="Curated group journeys with guaranteed departures, age-specific communities, and unforgettable experiences."
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="en_US" />
+		<meta name="twitter:card" content="summary_large_image" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link rel="stylesheet" href="assets/styles.css?v=20260523-wish-dashboard" />
+		<link rel="stylesheet" href="assets/consent.css?v=20260523" />
+	</head>
+	<body>
+		<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+		<header class="site-nav" id="siteNav">
+			<div class="container nav-row">
+				<a class="brand" href="#home" aria-label="YesGenie home">
+					<span class="brand__plate">
+						<img class="brand__logo" src="assets/yesgenie-logo.png" alt="YesGenie" />
+					</span>
+				</a>
+
+				<nav class="nav-links" aria-label="Primary navigation">
+					<a href="#why">Why YesGenie</a>
+					<a href="#guaranteed">Guaranteed Departures</a>
+					<a href="#featured">Trips</a>
+					<a href="#wish-quiz">Make a Wish</a>
+					<a href="/dashboard">Dashboard</a>
+					<a href="/login">Login</a>
+				</nav>
+
+				<div class="nav-actions">
+					<a class="btn btn--ghost nav-actions__desktop" href="/active-itineraries">Active Trips</a>
+					<a class="btn btn--primary nav-actions__desktop" href="#featured">Explore Trips</a>
+					<button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" id="navToggle">
+						<span></span><span></span><span></span>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+			<nav class="mobile-menu__links" aria-label="Mobile navigation">
+				<a href="#why">Why YesGenie</a>
+				<a href="#guaranteed">Guaranteed Departures</a>
+				<a href="#age-groups">Age-Specific Tours</a>
+				<a href="#featured">Featured Trips</a>
+				<a href="#wish-quiz">Make a Wish</a>
+				<a href="/dashboard">Dashboard</a>
+				<a href="/login">Login</a>
+			</nav>
+			<a class="btn btn--primary" href="#featured">Explore Trips</a>
+		</div>
+
+		<main>
+			<section class="hero" id="home" aria-label="YesGenie hero">
+				<div class="hero__media" aria-hidden="true">
+					<img
+						class="hero__image"
+						src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=2200&h=1400&fit=crop&auto=format&q=82"
+						alt=""
+						loading="eager"
+					/>
+					<div class="genie-ribbon genie-ribbon--one"></div>
+					<div class="genie-ribbon genie-ribbon--two"></div>
+					<div class="genie-trail genie-trail--one"></div>
+					<div class="genie-trail genie-trail--two"></div>
+					<div class="mist mist--one"></div>
+					<div class="mist mist--two"></div>
+					<div class="mist mist--three"></div>
+					<div class="particles"></div>
+				</div>
+
+				<div class="container hero__grid">
+					<div class="hero__copy">
+						<div class="eyebrow" data-reveal>Premium group journeys for young travelers</div>
+						<h1 class="hero__title" data-reveal style="transition-delay: 80ms">
+							Your Travel Wish, <span>Granted.</span>
+						</h1>
+						<p class="hero__sub" data-reveal style="transition-delay: 150ms">
+							Curated group journeys with guaranteed departures, age-specific communities, and unforgettable
+							experiences.
+						</p>
+						<p class="typing-line" data-reveal style="transition-delay: 190ms">
+							<span id="typingText">Planning your next wish...</span><i aria-hidden="true"></i>
+						</p>
+						<div class="hero__actions" data-reveal style="transition-delay: 220ms">
+							<a class="btn btn--primary" href="#featured">Explore Trips</a>
+							<a class="btn btn--ghost" href="/login?mode=create">Join the Waitlist</a>
+						</div>
+					</div>
+
+					<aside class="hero-panel" data-reveal style="transition-delay: 280ms" aria-label="YesGenie trip snapshot">
+						<div class="hero-panel__glow" aria-hidden="true"></div>
+						<p class="hero-panel__label">Next group energy</p>
+						<h2>Mountains, strangers, stories, and a plan that stays confirmed.</h2>
+						<div class="hero-panel__stats">
+							<div>
+								<strong>18-35</strong>
+								<span>Age-aware groups</span>
+							</div>
+							<div>
+								<strong>4-9D</strong>
+								<span>Curated escapes</span>
+							</div>
+							<div>
+								<strong>24/7</strong>
+								<span>Trip support</span>
+							</div>
+						</div>
+					</aside>
+				</div>
+
+				<a class="scroll-cue" href="#why" aria-label="Scroll to Why YesGenie">
+					<span></span>
+					Explore
+				</a>
+			</section>
+
+			<section class="section why" id="why" aria-label="Why YesGenie">
+				<div class="container">
+					<div class="section-head">
+						<div>
+							<div class="eyebrow" data-reveal>Why YesGenie</div>
+							<h2 class="section-title" data-reveal>Every trip feels intentional, social, and cinematic.</h2>
+						</div>
+						<p class="section-copy" data-reveal>
+							We design group journeys for young travelers who want the thrill of discovery with the reassurance of
+							clear logistics, thoughtful hosts, and people who match their energy.
+						</p>
+					</div>
+
+					<div class="why-grid">
+						<article class="feature-card" data-reveal>
+							<div class="feature-card__icon">01</div>
+							<h3>Curated, not crowded</h3>
+							<p>Routes, stays, activities, and group moments are shaped around a strong travel vibe.</p>
+						</article>
+						<article class="feature-card" data-reveal style="transition-delay: 80ms">
+							<div class="feature-card__icon">02</div>
+							<h3>Hosted end to end</h3>
+							<p>From pre-trip updates to on-ground support, every journey feels guided without feeling rigid.</p>
+						</article>
+						<article class="feature-card" data-reveal style="transition-delay: 160ms">
+							<div class="feature-card__icon">03</div>
+							<h3>Premium, youthful energy</h3>
+							<p>Adventure, comfort, music, local culture, and space for real connection all sit together.</p>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="section usp guaranteed" id="guaranteed" aria-label="Guaranteed departures">
+				<div class="container usp__grid">
+					<div class="usp__visual" data-reveal aria-hidden="true">
+						<div class="lamp-arc"></div>
+						<div class="departure-orbit">
+							<span></span><span></span><span></span>
+						</div>
+					</div>
+					<div class="usp__copy">
+						<div class="eyebrow" data-reveal>Guaranteed Departures</div>
+						<h2 class="section-title" data-reveal>Once your trip is confirmed, it stays confirmed.</h2>
+						<p class="section-copy section-copy--wide" data-reveal>
+							We offer guaranteed departures on all eligible trips except in rare unavoidable emergencies.
+						</p>
+						<div class="trust-row" data-reveal>
+							<span>Confirmed groups</span>
+							<span>Clear updates</span>
+							<span>Transparent support</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section age" id="age-groups" aria-label="Age-specific group tours">
+				<div class="container age__grid">
+					<div>
+						<div class="eyebrow" data-reveal>Age-Specific Group Tours</div>
+						<h2 class="section-title" data-reveal>Travel with people in your age group.</h2>
+						<p class="section-copy section-copy--wide" data-reveal>
+							Travel with people in your age group for better connections, shared energy, and unforgettable
+							experiences.
+						</p>
+					</div>
+					<div class="age-bands" data-reveal>
+						<div class="age-band">
+							<span>18-24</span>
+							<p>High-energy adventures, host-led icebreakers, and first-trip confidence.</p>
+						</div>
+						<div class="age-band">
+							<span>25-32</span>
+							<p>Work-life resets, meaningful groups, scenic stays, and smarter pacing.</p>
+						</div>
+						<div class="age-band">
+							<span>33-40</span>
+							<p>Premium comfort, richer conversations, and curated cultural depth.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section featured" id="featured" aria-label="Featured trips">
+				<div class="container">
+					<div class="section-head">
+						<div>
+							<div class="eyebrow" data-reveal>Featured Trips</div>
+							<h2 class="section-title" data-reveal>Journeys ready for your next yes.</h2>
+						</div>
+						<p class="section-copy" data-reveal>
+							Atmospheric routes, active communities, and itineraries designed for people who want more than a
+							checklist.
+						</p>
+					</div>
+
+					<div class="trip-grid">
+						<article
+							class="trip-card trip-card--large"
+							data-reveal
+							style="--trip-img: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1400&h=900&fit=crop&auto=format&q=80')"
+						>
+							<div class="trip-card__content">
+								<div class="trip-card__top">
+									<span>Now Active</span>
+									<span>4 Days</span>
+								</div>
+								<h3>Bir Experience</h3>
+								<p>Paragliding, cafes, creativity, mountain quiet, music, and a hosted group that opens naturally.</p>
+								<div class="trip-card__actions">
+									<a class="btn btn--primary" href="/bir-experience">Open Itinerary</a>
+									<a class="btn btn--glass" href="/login?mode=create">Join Waitlist</a>
+								</div>
+							</div>
+						</article>
+
+						<article
+							class="trip-card"
+							data-reveal
+							style="transition-delay: 80ms; --trip-img: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=900&h=1100&fit=crop&auto=format&q=80')"
+						>
+							<div class="trip-card__content">
+								<div class="trip-card__top"><span>Coming Soon</span><span>6 Days</span></div>
+								<h3>Ladakh Road Arc</h3>
+								<p>High-altitude drives, monastery mornings, bonfire nights, and cinematic group moments.</p>
+							</div>
+						</article>
+
+						<article
+							class="trip-card"
+							data-reveal
+							style="transition-delay: 160ms; --trip-img: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&h=1100&fit=crop&auto=format&q=80')"
+						>
+							<div class="trip-card__content">
+								<div class="trip-card__top"><span>Coming Soon</span><span>5 Days</span></div>
+								<h3>Island Reset</h3>
+								<p>Warm beaches, slow mornings, water adventures, and community-led sunset rituals.</p>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="section wish-quiz" id="wish-quiz" aria-label="Make a Wish quiz">
+				<div class="container wish-quiz__grid">
+					<div>
+						<div class="eyebrow" data-reveal>Make a Wish</div>
+						<h2 class="section-title" data-reveal>Tell us the trip you want YesGenie to grant.</h2>
+						<p class="section-copy section-copy--wide" data-reveal>
+							Share the essentials once you are signed in. We save your wish securely under your Firebase account
+							and use it to understand your travel profile, work context, and preferred communication details.
+						</p>
+						<div class="wish-quiz__note" data-reveal>
+							Email is not requested here because Firebase login already captures it. Homemakers are considered
+							working and are welcome to enter Homemaker as their occupation.
+						</div>
+					</div>
+
+					<form class="wish-form" id="wishQuizForm" data-reveal>
+						<div class="wish-form__status" id="wishQuizStatus" role="status">
+							<span aria-hidden="true"></span>
+							<strong id="wishQuizStatusText">Login to save your wish.</strong>
+						</div>
+						<div class="wish-form__grid">
+							<label class="wish-field" for="wishName">
+								<span>Name</span>
+								<input id="wishName" name="name" type="text" autocomplete="name" required />
+							</label>
+							<label class="wish-field" for="wishGender">
+								<span>Gender</span>
+								<select id="wishGender" name="gender" required>
+									<option value="">Select gender</option>
+									<option>Female</option>
+									<option>Male</option>
+									<option>Non-binary</option>
+									<option>Prefer not to say</option>
+								</select>
+							</label>
+							<label class="wish-field" for="wishBirthYear">
+								<span>Year of birth</span>
+								<input id="wishBirthYear" name="yearOfBirth" type="number" inputmode="numeric" min="1900" max="2026" required />
+							</label>
+							<label class="wish-field" for="wishPhone">
+								<span>Mobile number</span>
+								<input id="wishPhone" name="phoneNumber" type="tel" autocomplete="tel" required />
+							</label>
+							<label class="wish-field" for="wishInstagram">
+								<span>Instagram ID</span>
+								<input id="wishInstagram" name="instagramId" type="text" autocomplete="off" required />
+							</label>
+							<label class="wish-field" for="wishCity">
+								<span>City of work</span>
+								<input id="wishCity" name="cityOfWork" type="text" autocomplete="address-level2" required />
+							</label>
+							<label class="wish-field wish-field--full" for="wishOccupation">
+								<span>Appointed as / Occupation</span>
+								<input id="wishOccupation" name="occupation" type="text" autocomplete="organization-title" required />
+								<small>Homemaker is a valid working occupation for this form.</small>
+							</label>
+						</div>
+						<div class="wish-form__actions">
+							<button class="btn btn--primary" id="wishSubmitBtn" type="submit">Save My Wish</button>
+							<a class="btn btn--ghost" id="wishLoginLink" href="/login?mode=create">Login / Sign Up</a>
+							<a class="btn btn--ghost is-hidden" id="wishDashboardLink" href="/dashboard">View Dashboard</a>
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section class="section login-section" id="login" aria-label="YesGenie member portal">
+				<div class="container login__grid">
+					<div class="login__copy">
+						<div class="eyebrow" data-reveal>Member Access</div>
+						<h2 class="section-title" data-reveal>Keep your next wish within reach.</h2>
+						<p class="section-copy section-copy--wide" data-reveal>
+							Your YesGenie account lives on a dedicated page, so sign-in, sign-up, password reset, and trip access
+							stay clean and reliable.
+						</p>
+					</div>
+
+					<div class="login-card login-card--portal" data-reveal>
+						<div class="login-card__halo" aria-hidden="true"></div>
+						<div class="login-card__smoke" aria-hidden="true"></div>
+						<span class="login-card__kicker">Secure member portal</span>
+						<h3>Open your trip space</h3>
+						<p>
+							Login now to access saved trips, or sign up to join the YesGenie waitlist and unlock future member
+							features.
+						</p>
+						<div class="login-card__actions">
+							<a class="btn btn--primary login-card__button" href="/login">Login Now</a>
+							<a class="btn btn--ghost login-card__button" href="/login?mode=create">Sign Up</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</main>
+
+		<footer class="footer" aria-label="Footer">
+			<div class="container footer__grid">
+				<div>
+					<a class="footer__brand" href="#home" aria-label="YesGenie home">
+						<span class="brand__plate">
+							<img src="assets/yesgenie-logo.png" alt="YesGenie" />
+						</span>
+					</a>
+					<p>
+						A modern premium travel startup where every group trip feels like a wish fulfilled.
+					</p>
+					<p class="footer__small">&copy; <span id="year"></span> YesGenie. All rights reserved.</p>
+				</div>
+				<nav class="footer__links" aria-label="Footer navigation">
+					<a href="#why">Why YesGenie</a>
+					<a href="#guaranteed">Guaranteed Departures</a>
+					<a href="#age-groups">Age-Specific Tours</a>
+					<a href="#featured">Featured Trips</a>
+					<a href="#wish-quiz">Make a Wish</a>
+					<a href="/dashboard">Dashboard</a>
+					<a href="/login">Login</a>
+					<a href="/privacy-policy">Privacy Policy</a>
+					<a href="/terms-and-conditions">Terms & Conditions</a>
+					<a href="/refund-cancellation-policy">Refund & Cancellation Policy</a>
+					<a href="/cookie-policy">Cookie Policy</a>
+					<a href="/contact-grievance-officer">Contact / Grievance Officer</a>
+				</nav>
+			</div>
+		</footer>
+
+		<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+		<section class="home-prompt" id="homePrompt" aria-hidden="true" aria-label="YesGenie member prompt">
+			<div class="home-prompt__screen" aria-hidden="true"></div>
+			<div class="home-prompt__card" role="dialog" aria-modal="false" aria-labelledby="homePromptTitle">
+				<button class="home-prompt__close" type="button" id="homePromptClose" aria-label="Close prompt"></button>
+				<div class="home-lamp" aria-hidden="true">
+					<span class="home-lamp__smoke home-lamp__smoke--one"></span>
+					<span class="home-lamp__smoke home-lamp__smoke--two"></span>
+					<span class="home-lamp__body"></span>
+					<span class="home-lamp__spout"></span>
+					<span class="home-lamp__handle"></span>
+					<span class="home-lamp__base"></span>
+				</div>
+				<div class="home-prompt__copy">
+					<span>Member access</span>
+					<h2 id="homePromptTitle">Your travel wish is waiting.</h2>
+					<p>
+						Login now or sign up to save trip interests, join waitlists, and keep your next YesGenie departure close.
+					</p>
+				</div>
+				<div class="home-prompt__actions">
+					<a class="btn btn--primary" href="/login">Login Now</a>
+					<a class="btn btn--ghost" href="/login?mode=create">Sign Up</a>
+				</div>
+			</div>
+		</section>
+
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-auth-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore-compat.js"></script>
+		<script src="assets/firebase-config.js?v=20260523"></script>
+		<script src="assets/consent.js?v=20260523" defer></script>
+		<script src="assets/app.js?v=20260523-wish-dashboard" defer></script>
+	</body>
+</html>

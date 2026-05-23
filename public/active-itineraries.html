@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<title>Active Trips | YesGenie</title>
+		<meta
+			name="description"
+			content="Explore active YesGenie group trips, including the Bir Experience and upcoming curated departures."
+		/>
+		<meta name="theme-color" content="#070a11" />
+		<link rel="icon" type="image/png" href="assets/favicon.png?v=20260518" />
+		<link rel="apple-touch-icon" href="assets/favicon.png?v=20260518" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="assets/consent.css?v=20260523" />
+		<link rel="stylesheet" href="assets/active-itineraries.css?v=20260523-legal" />
+	</head>
+	<body>
+		<header class="nav">
+			<a class="brand" href="/" aria-label="YesGenie home">
+				<span class="brand__plate">
+					<img src="assets/yesgenie-logo.png" alt="YesGenie" width="156" height="54" />
+				</span>
+			</a>
+			<nav aria-label="Primary">
+				<a href="/">Home</a>
+				<a href="/bir-experience">Bir Experience</a>
+				<a href="/dashboard">Dashboard</a>
+				<a href="/login">Login</a>
+			</nav>
+		</header>
+
+		<main>
+			<section class="hero">
+				<div class="container hero__grid">
+					<div>
+						<div class="kicker">Active Trips</div>
+						<h1>Group journeys currently open.</h1>
+						<p>
+							Browse live YesGenie experiences that are ready to explore, shortlist, and discuss with the team.
+						</p>
+					</div>
+					<a class="hero__cta" href="/bir-experience">View Bir Edition</a>
+				</div>
+			</section>
+
+			<section class="section" aria-label="Active itinerary list">
+				<div class="container itinerary-grid">
+					<article class="itinerary-card">
+						<div class="itinerary-card__media" aria-hidden="true"></div>
+						<div class="itinerary-card__content">
+							<div class="status">Now Active</div>
+							<h2>Bir Experience</h2>
+							<p>
+								Four days in Bir with new people, shared stories, paragliding, cafes, creativity, quiet mountain
+								moments, and music you will remember.
+							</p>
+							<div class="chips" aria-label="Highlights">
+								<span>4 Days</span>
+								<span>Community</span>
+								<span>Paragliding</span>
+								<span>Make a Wish</span>
+							</div>
+							<div class="actions">
+								<a class="btn btn--primary" href="/bir-experience">Open Itinerary</a>
+								<a class="btn btn--ghost" href="/bir-experience#quiz">Take Quiz</a>
+							</div>
+						</div>
+					</article>
+
+					<article class="itinerary-card itinerary-card--soon">
+						<div class="itinerary-card__content">
+							<div class="status status--soft">Coming Soon</div>
+							<h2>More departures are being curated.</h2>
+							<p>
+								New active trips will appear here as soon as departure details, availability, and booking guidance are ready.
+							</p>
+							<a class="btn btn--ghost" href="/login?mode=create">Join the Waitlist</a>
+						</div>
+					</article>
+				</div>
+			</section>
+		</main>
+		<footer class="legal-footer" aria-label="Legal footer">
+			<div class="legal-footer__inner">
+				<p>&copy; 2026 YesGenie. Active trips are subject to availability and published terms.</p>
+				<nav class="legal-footer__links" aria-label="Legal links">
+					<a href="/privacy-policy">Privacy Policy</a>
+					<a href="/terms-and-conditions">Terms & Conditions</a>
+					<a href="/refund-cancellation-policy">Refund & Cancellation Policy</a>
+					<a href="/cookie-policy">Cookie Policy</a>
+					<a href="/contact-grievance-officer">Contact / Grievance Officer</a>
+				</nav>
+			</div>
+		</footer>
+		<script src="assets/firebase-config.js?v=20260523"></script>
+		<script src="assets/consent.js?v=20260523" defer></script>
+	</body>
+</html>
