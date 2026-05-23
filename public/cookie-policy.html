@@ -16,7 +16,7 @@
 	<body>
 		<header class="legal-nav">
 			<a class="brand" href="/" aria-label="YesGenie home"><span class="brand__plate"><img src="assets/yesgenie-logo.png" alt="YesGenie" /></span></a>
-			<nav aria-label="Primary"><a href="/">Home</a><a href="/dashboard">Dashboard</a><a href="/login">Login</a></nav>
+			<nav aria-label="Primary"><a href="/">Home</a><a href="/dashboard">Dashboard</a><a href="/admin" data-admin-link hidden>Admin</a><a href="/login" data-auth-link>Login</a></nav>
 		</header>
 		<main>
 			<section class="legal-hero">
@@ -67,7 +67,10 @@
 				</nav>
 			</div>
 		</footer>
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-auth-compat.js"></script>
 		<script src="assets/firebase-config.js?v=20260523"></script>
 		<script src="assets/consent.js?v=20260523" defer></script>
+		<script src="assets/nav-auth.js?v=20260523" defer></script>
 	</body>
 </html>

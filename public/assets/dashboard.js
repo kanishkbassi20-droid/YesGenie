@@ -68,7 +68,6 @@
 		profileDetails.innerHTML = detailRows([
 			["Name", profile.displayName || user.displayName],
 			["Email", user.email],
-			["Firebase UID", user.uid],
 			["Last profile sync", formatDate(profile.lastSeenAt)],
 			["Consent version", profile.legalConsent?.policyVersion || "Not recorded"],
 		]);

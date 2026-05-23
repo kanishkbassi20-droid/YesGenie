@@ -34,6 +34,7 @@ const resolveRequest = (url = "/") => {
 	const routes = {
 		"/": "index.html",
 		"/active-itineraries": "active-itineraries.html",
+		"/admin": "admin.html",
 		"/bir-experience": "bir-experience.html",
 		"/dashboard": "dashboard.html",
 		"/login": "login.html",

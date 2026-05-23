@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<title>Admin Dashboard | YesGenie</title>
+		<meta name="description" content="YesGenie admin dashboard for reviewing member profiles and Make a Wish quiz submissions." />
+		<meta name="theme-color" content="#070a11" />
+		<link rel="icon" type="image/png" href="assets/favicon.png?v=20260523" />
+		<link rel="apple-touch-icon" href="assets/favicon.png?v=20260523" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="assets/consent.css?v=20260523" />
+		<link rel="stylesheet" href="assets/admin.css?v=20260523" />
+	</head>
+	<body>
+		<header class="admin-nav">
+			<a class="brand" href="/" aria-label="YesGenie home">
+				<span class="brand__plate">
+					<img src="assets/yesgenie-logo.png" alt="YesGenie" />
+				</span>
+			</a>
+			<nav aria-label="Admin navigation">
+				<a href="/">Home</a>
+				<a href="/dashboard">Dashboard</a>
+				<a href="/#wish-quiz">Make a Wish</a>
+				<a href="/login" data-auth-link>Login</a>
+			</nav>
+		</header>
+
+		<main class="admin-page">
+			<section class="admin-hero">
+				<div class="container admin-hero__grid">
+					<div>
+						<div class="eyebrow">Admin Dashboard</div>
+						<h1>Members and wishes, in one secure view.</h1>
+						<p>
+							Review YesGenie user profiles and Make a Wish submissions stored in Cloud Firestore. Email and CRM
+							actions can be layered onto this dashboard next.
+						</p>
+					</div>
+					<div class="admin-status" id="adminStatus" role="status">
+						<span aria-hidden="true"></span>
+						<strong id="adminStatusText">Sign in with an admin account.</strong>
+					</div>
+				</div>
+			</section>
+
+			<section class="container admin-shell">
+				<article class="admin-card" id="adminLoginCard">
+					<div class="card-head">
+						<div>
+							<span>Protected Access</span>
+							<h2>Admin sign in</h2>
+						</div>
+					</div>
+					<form class="admin-form" id="adminLoginForm">
+						<label class="admin-field" for="adminEmail">
+							<span>Admin email</span>
+							<input id="adminEmail" name="email" type="email" autocomplete="email" required />
+						</label>
+						<label class="admin-field" for="adminPassword">
+							<span>Password</span>
+							<input id="adminPassword" name="password" type="password" autocomplete="current-password" required />
+						</label>
+						<button class="btn btn--primary" id="adminLoginBtn" type="submit">Open Admin Dashboard</button>
+					</form>
+					<p class="admin-note">
+						Access is restricted by Firebase Auth and Firestore rules to approved admin emails or accounts with an
+						admin custom claim.
+					</p>
+				</article>
+
+				<div class="admin-content is-hidden" id="adminContent">
+					<div class="admin-actions">
+						<label class="admin-search" for="adminSearch">
+							<span>Search users</span>
+							<input id="adminSearch" type="search" placeholder="Search by name, email, phone, city, occupation" />
+						</label>
+						<div class="admin-actions__buttons">
+							<button class="btn btn--ghost" type="button" id="refreshAdminData">Refresh</button>
+							<button class="btn btn--ghost" type="button" id="adminSignOut">Sign Out</button>
+						</div>
+					</div>
+
+					<div class="stat-grid" aria-label="Admin statistics">
+						<div class="stat-card">
+							<span>Total users</span>
+							<strong id="totalUsers">0</strong>
+						</div>
+						<div class="stat-card">
+							<span>Saved wishes</span>
+							<strong id="totalWishes">0</strong>
+						</div>
+						<div class="stat-card">
+							<span>Latest wish</span>
+							<strong id="latestWish">Not available</strong>
+						</div>
+					</div>
+
+					<div class="admin-list" id="adminUserList" aria-live="polite"></div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="legal-footer" aria-label="Legal footer">
+			<div class="legal-footer__inner">
+				<p>&copy; <span id="year"></span> YesGenie. Admin access is monitored through Firebase Authentication.</p>
+				<nav class="legal-footer__links" aria-label="Legal links">
+					<a href="/privacy-policy">Privacy Policy</a>
+					<a href="/terms-and-conditions">Terms & Conditions</a>
+					<a href="/refund-cancellation-policy">Refund & Cancellation Policy</a>
+					<a href="/cookie-policy">Cookie Policy</a>
+					<a href="/contact-grievance-officer">Contact / Grievance Officer</a>
+				</nav>
+			</div>
+		</footer>
+
+		<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-app-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-auth-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore-compat.js"></script>
+		<script src="assets/firebase-config.js?v=20260523"></script>
+		<script src="assets/consent.js?v=20260523" defer></script>
+		<script src="assets/nav-auth.js?v=20260523" defer></script>
+		<script src="assets/admin.js?v=20260523" defer></script>
+	</body>
+</html>

@@ -74,6 +74,9 @@ a {
 }
 
 .nav {
+	position: sticky;
+	top: 0;
+	z-index: 80;
 	width: var(--container);
 	min-height: 76px;
 	margin: 0 auto;
@@ -82,6 +85,8 @@ a {
 	justify-content: space-between;
 	gap: 16px;
 	border-bottom: 1px solid var(--line);
+	background: rgba(7, 10, 17, 0.82);
+	backdrop-filter: blur(18px);
 }
 
 .brand {
