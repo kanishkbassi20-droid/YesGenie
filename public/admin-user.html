@@ -1,13 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-		<title>Bir Experience | YesGenie</title>
-		<meta
-			name="description"
-			content="A 4-day YesGenie Bir Experience with paragliding, cafes, creativity, reflection, music, and new people."
-		/>
+		<title>User Detail | YesGenie</title>
+		<meta name="description" content="Secure YesGenie user detail view for member profile and Make a Wish history." />
 		<meta name="theme-color" content="#070a11" />
 		<link rel="icon" type="image/png" href="assets/favicon.png?v=20260523" />
 		<link rel="apple-touch-icon" href="assets/favicon.png?v=20260523" />
@@ -18,36 +15,54 @@
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="assets/consent.css?v=20260523" />
-		<link rel="stylesheet" href="assets/bir-experience.css?v=20260606-destinations" />
-		<link rel="stylesheet" href="assets/invite-request.css?v=20260606-phone-prompt" />
+		<link rel="stylesheet" href="assets/admin.css?v=20260526-admin-theme" />
 		<link rel="stylesheet" href="assets/genie-guide.css?v=20260524-chatbot" />
 	</head>
 	<body>
-		<header class="site-header" aria-label="Bir experience navigation">
+		<header class="admin-nav">
 			<a class="brand" href="/" aria-label="YesGenie home">
-				<img src="assets/yesgenie-logo.png" alt="YesGenie" width="158" height="54" />
+				<span class="brand__plate">
+					<img src="assets/yesgenie-logo.png" alt="YesGenie" />
+				</span>
 			</a>
-			<nav class="top-nav" aria-label="Page sections">
+			<nav aria-label="User detail navigation">
+				<a href="/">Home</a>
 				<a href="/active-itineraries">Trips</a>
-				<a href="#itinerary">Itinerary</a>
-				<a href="#included">Included</a>
-				<a href="#stay">Stay</a>
-				<a href="/dashboard">Dashboard</a>
+				<a href="/admin">Users</a>
 				<a href="/login" data-auth-link>Login</a>
 			</nav>
-			<a class="header-cta" href="/#wish-quiz">Wish</a>
 		</header>
 
-		<main id="app" aria-live="polite"></main>
+		<main class="admin-page admin-detail-page">
+			<section class="admin-hero">
+				<div class="container admin-hero__grid">
+					<div>
+						<div class="eyebrow">User Detail</div>
+						<h1>Profile, wish data, and activity in one place.</h1>
+						<p>
+							Review a single member with a cleaner profile view, latest wish details, and saved submission history.
+						</p>
+					</div>
+					<div class="admin-status" id="adminStatus" role="status">
+						<span aria-hidden="true"></span>
+						<strong id="adminStatusText">Checking access...</strong>
+					</div>
+				</div>
+			</section>
 
-		<div class="mobile-sticky" aria-label="Quick actions">
-			<a class="mobile-sticky__ghost" href="#itinerary">View Itinerary</a>
-			<a class="mobile-sticky__primary" href="/#wish-quiz">Make a Wish</a>
-		</div>
+			<section class="container admin-shell">
+				<div class="admin-content" id="adminDetailContent" aria-live="polite">
+					<div class="empty-state">
+						<strong>Loading user profile...</strong>
+						Fetching saved profile and wish details.
+					</div>
+				</div>
+			</section>
+		</main>
 
 		<footer class="legal-footer" aria-label="Legal footer">
 			<div class="legal-footer__inner">
-				<p>&copy; 2026 YesGenie. Bir Experience details are subject to safety, weather, and booking terms.</p>
+				<p>&copy; <span id="year"></span> YesGenie. User data is visible only to approved secure operators.</p>
 				<nav class="legal-footer__links" aria-label="Legal links">
 					<a href="/privacy-policy">Privacy Policy</a>
 					<a href="/terms-and-conditions">Terms & Conditions</a>
@@ -58,14 +73,15 @@
 			</div>
 		</footer>
 
+		<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-app-compat.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-auth-compat.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore-compat.js"></script>
 		<script src="assets/firebase-config.js?v=20260523"></script>
 		<script src="assets/consent.js?v=20260523" defer></script>
 		<script src="assets/nav-auth.js?v=20260526-admin-route" defer></script>
-		<script src="assets/bir-experience.js?v=20260606-destinations" defer></script>
-		<script src="assets/invite-request.js?v=20260606-phone-prompt" defer></script>
+		<script src="assets/admin-user.js?v=20260526-email-trigger" defer></script>
 		<script src="assets/genie-guide.js?v=20260524-chatbot" defer></script>
 	</body>
 </html>

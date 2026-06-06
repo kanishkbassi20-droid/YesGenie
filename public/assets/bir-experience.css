@@ -42,6 +42,7 @@ html {
 
 body {
 	margin: 0;
+	padding-top: var(--header-h);
 	font-family: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 	color: var(--ink);
 	background:
@@ -95,8 +96,10 @@ legend {
 }
 
 .site-header {
-	position: sticky;
+	position: fixed;
 	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
 	z-index: 30;
 	height: var(--header-h);
 	width: var(--container);
@@ -108,6 +111,7 @@ legend {
 	border-bottom: 1px solid rgba(38, 48, 40, 0.08);
 	background: rgba(247, 241, 231, 0.78);
 	backdrop-filter: blur(14px);
+	box-shadow: 0 18px 56px rgba(55, 38, 21, 0.12);
 }
 
 .brand {
@@ -265,7 +269,7 @@ legend {
 	z-index: -2;
 	background:
 		linear-gradient(180deg, rgba(247, 241, 231, 0.18) 0%, rgba(247, 241, 231, 0.82) 74%, var(--cream) 100%),
-		url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=2200&h=1400&fit=crop&auto=format&q=78") center / cover;
+		var(--trip-hero-img, url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=2200&h=1400&fit=crop&auto=format&q=78")) center / cover;
 	filter: saturate(0.94) contrast(1.02);
 }
 
@@ -580,6 +584,67 @@ legend {
 	border-radius: 999px;
 }
 
+.stay-grid {
+	display: grid;
+	grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1fr);
+	gap: 14px;
+	align-items: stretch;
+}
+
+.stay-visual {
+	position: relative;
+	min-height: 360px;
+	border: 1px solid rgba(255, 253, 248, 0.78);
+	border-radius: var(--radius);
+	overflow: hidden;
+	background:
+		linear-gradient(180deg, rgba(38, 66, 53, 0.02), rgba(38, 66, 53, 0.26)),
+		var(--trip-stay-img, url("https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=900&h=900&fit=crop&auto=format&q=78")) center / cover;
+	box-shadow: var(--shadow);
+}
+
+.stay-visual::after {
+	content: "";
+	position: absolute;
+	inset: auto -12% -18%;
+	height: 46%;
+	background:
+		radial-gradient(ellipse at 24% 60%, rgba(255, 253, 248, 0.58), transparent 58%),
+		radial-gradient(ellipse at 72% 70%, rgba(216, 180, 95, 0.22), transparent 62%);
+	filter: blur(18px);
+}
+
+.stay-list {
+	display: grid;
+	gap: 10px;
+	align-content: center;
+}
+
+.stay-card {
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	background: rgba(255, 253, 248, 0.8);
+	box-shadow: var(--shadow-soft);
+	padding: 16px;
+	display: grid;
+	grid-template-columns: 34px 1fr;
+	gap: 12px;
+	align-items: start;
+}
+
+.stay-card h3 {
+	margin: 0;
+	font-size: 17px;
+	line-height: 1.25;
+}
+
+.stay-card p {
+	margin: 6px 0 0;
+	color: var(--muted);
+	line-height: 1.52;
+	font-size: 14px;
+}
+
 .quiz-wrap {
 	display: grid;
 	grid-template-columns: minmax(0, 0.95fr) minmax(290px, 0.55fr);
@@ -691,7 +756,7 @@ legend {
 	top: calc(var(--header-h) + 16px);
 	background:
 		linear-gradient(180deg, rgba(38, 66, 53, 0.94), rgba(53, 88, 70, 0.96)),
-		url("https://images.unsplash.com/photo-1528164344705-47542687000d?w=900&h=900&fit=crop&auto=format&q=76") center / cover;
+		var(--trip-planning-img, url("https://images.unsplash.com/photo-1528164344705-47542687000d?w=900&h=900&fit=crop&auto=format&q=76")) center / cover;
 	color: #fffaf1;
 	overflow: hidden;
 }
@@ -732,7 +797,7 @@ legend {
 	border-radius: 24px;
 	background:
 		linear-gradient(90deg, rgba(38, 66, 53, 0.94), rgba(123, 81, 53, 0.88)),
-		url("https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1800&h=900&fit=crop&auto=format&q=78") center / cover;
+		var(--trip-final-img, url("https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1800&h=900&fit=crop&auto=format&q=78")) center / cover;
 	color: #fffaf1;
 	padding: clamp(24px, 4.6vw, 44px);
 	box-shadow: var(--shadow);
@@ -811,7 +876,8 @@ legend {
 	.section-head,
 	.hero__grid,
 	.timeline-shell,
-	.quiz-wrap {
+	.quiz-wrap,
+	.stay-grid {
 		grid-template-columns: 1fr;
 	}
 
@@ -839,6 +905,10 @@ legend {
 	.whatsapp-card {
 		position: relative;
 		top: auto;
+	}
+
+	.stay-visual {
+		min-height: 300px;
 	}
 }
 
@@ -912,6 +982,10 @@ legend {
 
 	.quiz-actions .button {
 		width: 100%;
+	}
+
+	.stay-card {
+		grid-template-columns: 1fr;
 	}
 
 	.mobile-sticky {
@@ -1112,7 +1186,7 @@ body::after {
 	background:
 		linear-gradient(90deg, rgba(7, 10, 17, 0.96) 0%, rgba(7, 10, 17, 0.74) 46%, rgba(7, 10, 17, 0.34) 100%),
 		linear-gradient(180deg, rgba(7, 10, 17, 0.16) 0%, rgba(7, 10, 17, 0.84) 86%, #070a11 100%),
-		url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=2200&h=1400&fit=crop&auto=format&q=82") center / cover;
+		var(--trip-hero-img, url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=2200&h=1400&fit=crop&auto=format&q=82")) center / cover;
 	filter: saturate(0.96) contrast(1.08) brightness(0.76);
 }
 
@@ -1151,6 +1225,7 @@ body::after {
 .day-summary,
 .itinerary-card,
 .quiz-card,
+.stay-card,
 .whatsapp-card {
 	border-radius: var(--radius);
 	border-color: rgba(255, 255, 255, 0.14);
@@ -1261,7 +1336,8 @@ body::after {
 .whatsapp-card {
 	background:
 		linear-gradient(180deg, rgba(12, 18, 30, 0.9), rgba(7, 10, 17, 0.92)),
-		linear-gradient(135deg, rgba(18, 174, 232, 0.16), rgba(243, 173, 63, 0.1));
+		linear-gradient(135deg, rgba(18, 174, 232, 0.16), rgba(243, 173, 63, 0.1)),
+		var(--trip-planning-img, url("https://images.unsplash.com/photo-1528164344705-47542687000d?w=900&h=900&fit=crop&auto=format&q=76")) center / cover;
 }
 
 .preview-message {
@@ -1274,7 +1350,7 @@ body::after {
 	border-radius: var(--radius);
 	background:
 		linear-gradient(90deg, rgba(7, 10, 17, 0.92), rgba(12, 18, 30, 0.84)),
-		url("https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1800&h=900&fit=crop&auto=format&q=78") center / cover;
+		var(--trip-final-img, url("https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1800&h=900&fit=crop&auto=format&q=78")) center / cover;
 	border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
@@ -1298,6 +1374,57 @@ body::after {
 	color: var(--ink);
 }
 
+body[data-trip="himachal-expedition"] {
+	--green: #f5c76b;
+	--brown: #f5c76b;
+	--clay: #fff1c8;
+	--gold: #f5c76b;
+	background:
+		linear-gradient(140deg, rgba(245, 199, 107, 0.14), transparent 35%),
+		linear-gradient(225deg, rgba(255, 241, 200, 0.08), transparent 42%),
+		linear-gradient(180deg, #04070d 0%, #07101b 48%, #0b111d 100%);
+}
+
+body[data-trip="himachal-expedition"] .hero::before {
+	background:
+		linear-gradient(90deg, rgba(4, 7, 13, 0.96) 0%, rgba(7, 16, 27, 0.78) 48%, rgba(7, 16, 27, 0.28) 100%),
+		linear-gradient(180deg, rgba(7, 10, 17, 0.08) 0%, rgba(7, 16, 27, 0.84) 86%, #07101b 100%),
+		var(--trip-hero-img, url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=2200&h=1400&fit=crop&auto=format&q=82")) center / cover;
+	filter: saturate(0.92) contrast(1.08) brightness(0.7);
+}
+
+body[data-trip="himachal-expedition"] .hero::after {
+	background:
+		linear-gradient(90deg, transparent, rgba(255, 241, 200, 0.14), rgba(245, 199, 107, 0.22), transparent),
+		radial-gradient(ellipse at 66% 40%, rgba(245, 199, 107, 0.18), transparent 48%);
+}
+
+body[data-trip="himachal-expedition"] .header-cta,
+body[data-trip="himachal-expedition"] .button--primary,
+body[data-trip="himachal-expedition"] .day-tab.is-active,
+body[data-trip="himachal-expedition"] .mobile-sticky__primary {
+	color: #07101b;
+	background: linear-gradient(135deg, #fff1c8, #f5c76b 54%, #d59b34);
+	box-shadow: 0 18px 54px rgba(245, 199, 107, 0.2);
+}
+
+body[data-trip="himachal-expedition"] .mini-icon {
+	background: rgba(245, 199, 107, 0.14);
+	color: #ffe2a1;
+}
+
+body[data-trip="himachal-expedition"] .final-cta {
+	background:
+		linear-gradient(90deg, rgba(4, 7, 13, 0.92), rgba(12, 18, 30, 0.82)),
+		var(--trip-final-img, url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800&h=900&fit=crop&auto=format&q=82")) center / cover;
+}
+
+body[data-trip="himachal-expedition"] .soft-band {
+	background:
+		linear-gradient(180deg, rgba(10, 15, 25, 0.96), rgba(7, 10, 17, 0.98)),
+		linear-gradient(120deg, rgba(245, 199, 107, 0.1), transparent 44%);
+}
+
 @media (max-width: 720px) {
 	:root {
 		--container: min(100% - 24px, 620px);
@@ -1316,6 +1443,27 @@ body::after {
 	.hero::before {
 		background:
 			linear-gradient(180deg, rgba(7, 10, 17, 0.72) 0%, rgba(7, 10, 17, 0.9) 62%, #070a11 100%),
-			url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1400&h=1200&fit=crop&auto=format&q=80") center / cover;
+			var(--trip-hero-img, url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1400&h=1200&fit=crop&auto=format&q=80")) center / cover;
+	}
+
+	body[data-trip="himachal-expedition"] .hero::before {
+		background:
+			linear-gradient(180deg, rgba(7, 16, 27, 0.7) 0%, rgba(7, 16, 27, 0.92) 64%, #07101b 100%),
+			var(--trip-hero-img, url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&h=1200&fit=crop&auto=format&q=80")) center / cover;
+	}
+}
+
+/* Full-bleed header polish */
+.site-header {
+	left: 0;
+	right: 0;
+	transform: none;
+	width: 100%;
+	padding-inline: max(24px, calc((100vw - 1120px) / 2));
+}
+
+@media (max-width: 720px) {
+	.site-header {
+		padding-inline: 12px;
 	}
 }

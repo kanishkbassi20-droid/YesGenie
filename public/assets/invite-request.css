@@ -1,0 +1,229 @@
+.invite-toast {
+	position: fixed;
+	left: 18px;
+	bottom: 18px;
+	z-index: 240;
+	max-width: min(390px, calc(100% - 36px));
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	border-radius: 8px;
+	background: rgba(7, 10, 17, 0.94);
+	color: #f8fbff;
+	box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+	backdrop-filter: blur(16px);
+	padding: 13px 15px;
+	font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+	font-size: 0.9rem;
+	font-weight: 800;
+	line-height: 1.45;
+	opacity: 0;
+	transform: translateY(12px);
+	pointer-events: none;
+	transition: opacity 220ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.invite-toast.is-open {
+	opacity: 1;
+	transform: none;
+}
+
+[data-invite-trip] {
+	cursor: pointer;
+}
+
+[data-invite-trip].is-requested {
+	opacity: 0.82;
+}
+
+[data-invite-trip][disabled] {
+	cursor: wait;
+	opacity: 0.7;
+	transform: none;
+}
+
+.invite-phone-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 260;
+	display: grid;
+	place-items: center;
+	padding: 18px;
+	font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+.invite-phone-modal__screen {
+	position: absolute;
+	inset: 0;
+	background: rgba(5, 7, 13, 0.7);
+	backdrop-filter: blur(14px);
+}
+
+.invite-phone-modal__card {
+	position: relative;
+	width: min(430px, 100%);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	border-radius: 8px;
+	background:
+		linear-gradient(160deg, rgba(18, 174, 232, 0.14), transparent 38%),
+		linear-gradient(320deg, rgba(243, 173, 63, 0.16), transparent 44%),
+		rgba(9, 14, 24, 0.96);
+	color: #f8fbff;
+	box-shadow: 0 34px 90px rgba(0, 0, 0, 0.42);
+	padding: 24px;
+	overflow: hidden;
+}
+
+.invite-phone-modal__card::before {
+	content: "";
+	position: absolute;
+	inset: -18% -16% auto;
+	height: 180px;
+	opacity: 0.78;
+	filter: blur(18px);
+	background:
+		radial-gradient(ellipse at 24% 72%, rgba(18, 174, 232, 0.28), transparent 56%),
+		radial-gradient(ellipse at 72% 64%, rgba(243, 173, 63, 0.18), transparent 58%);
+	pointer-events: none;
+}
+
+.invite-phone-modal__card > * {
+	position: relative;
+	z-index: 1;
+}
+
+.invite-phone-modal__close {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	width: 34px;
+	height: 34px;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.08);
+	cursor: pointer;
+}
+
+.invite-phone-modal__close::before,
+.invite-phone-modal__close::after {
+	content: "";
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	top: 50%;
+	height: 2px;
+	border-radius: 999px;
+	background: rgba(248, 251, 255, 0.86);
+}
+
+.invite-phone-modal__close::before {
+	transform: rotate(45deg);
+}
+
+.invite-phone-modal__close::after {
+	transform: rotate(-45deg);
+}
+
+.invite-phone-modal__card > span {
+	display: inline-flex;
+	border: 1px solid rgba(243, 173, 63, 0.28);
+	border-radius: 999px;
+	background: rgba(243, 173, 63, 0.1);
+	color: #ffe0a3;
+	font-size: 0.72rem;
+	font-weight: 900;
+	letter-spacing: 0;
+	text-transform: uppercase;
+	padding: 8px 10px;
+}
+
+.invite-phone-modal__card h2 {
+	margin: 14px 42px 0 0;
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: clamp(1.9rem, 7vw, 2.6rem);
+	line-height: 0.98;
+	letter-spacing: 0;
+}
+
+.invite-phone-modal__card p {
+	margin: 12px 0 0;
+	color: rgba(248, 251, 255, 0.76);
+	line-height: 1.6;
+}
+
+.invite-phone-modal__card label {
+	display: block;
+	margin-top: 18px;
+	color: rgba(248, 251, 255, 0.82);
+	font-size: 0.84rem;
+	font-weight: 800;
+}
+
+.invite-phone-modal__card input {
+	width: 100%;
+	min-height: 50px;
+	margin-top: 8px;
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	border-radius: 8px;
+	background: rgba(7, 10, 17, 0.58);
+	color: #f8fbff;
+	padding: 13px 14px;
+	font: inherit;
+}
+
+.invite-phone-modal__card input:focus {
+	outline: none;
+	border-color: rgba(18, 174, 232, 0.72);
+	box-shadow: 0 0 0 4px rgba(18, 174, 232, 0.14);
+}
+
+.invite-phone-modal__error {
+	min-height: 22px;
+	margin-top: 8px;
+	color: #ffb1c4;
+	font-size: 0.84rem;
+	font-weight: 800;
+}
+
+.invite-phone-modal__actions {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 10px;
+	margin-top: 8px;
+}
+
+.invite-phone-modal__submit,
+.invite-phone-modal__secondary {
+	min-height: 44px;
+	border-radius: 999px;
+	border: 1px solid transparent;
+	padding: 11px 16px;
+	font: inherit;
+	font-weight: 900;
+	cursor: pointer;
+}
+
+.invite-phone-modal__submit {
+	background: #12aee8;
+	color: #06101a;
+	box-shadow: 0 16px 34px rgba(18, 174, 232, 0.22);
+}
+
+.invite-phone-modal__secondary {
+	background: rgba(255, 255, 255, 0.08);
+	border-color: rgba(255, 255, 255, 0.16);
+	color: rgba(248, 251, 255, 0.82);
+}
+
+body[data-invite-phone-open="true"] {
+	overflow: hidden;
+}
+
+@media (max-width: 460px) {
+	.invite-phone-modal__actions {
+		grid-template-columns: 1fr;
+	}
+
+	.invite-phone-modal__submit,
+	.invite-phone-modal__secondary {
+		width: 100%;
+	}
+}

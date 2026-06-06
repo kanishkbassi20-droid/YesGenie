@@ -13,7 +13,50 @@ service cloud.firestore {
       return signedIn()
         && (
           request.auth.token.admin == true
-          || request.auth.token.email in ['kanishkbassi20@gmail.com', 'admindash@gmail.com']
+          || request.auth.token.email in ['kanishkbassi20@gmail.com', 'admindash@gmail.com', 'infoyesgenie@gmail.com']
+        );
+    }
+
+    function shortString(value, max) {
+      return value is string && value.size() > 0 && value.size() <= max;
+    }
+
+    function validInviteRequest(userId) {
+      return request.resource.data.keys().hasOnly([
+        'uid',
+        'email',
+        'displayName',
+        'tripSlug',
+        'tripName',
+        'tripDuration',
+        'tripRoute',
+        'tripUrl',
+        'phoneNumber',
+        'status',
+        'sourcePath',
+        'createdAt',
+        'updatedAt',
+        'emailQueueStatus',
+        'emailQueueUpdatedAt',
+        'emailQueueAttempts',
+        'lastMailJobIds',
+        'lastEmailQueueError'
+      ])
+      && request.resource.data.uid == userId
+      && request.resource.data.status == 'requested'
+      && shortString(request.resource.data.tripSlug, 80)
+      && shortString(request.resource.data.tripName, 160)
+      && (!request.resource.data.keys().hasAny(['phoneNumber']) || shortString(request.resource.data.phoneNumber, 30));
+    }
+
+    function validInviteMail() {
+      return request.resource.data.keys().hasOnly(['to', 'message'])
+        && request.resource.data.message.keys().hasOnly(['subject', 'html'])
+        && shortString(request.resource.data.message.subject, 180)
+        && shortString(request.resource.data.message.html, 10000)
+        && (
+          request.resource.data.to == 'infoyesgenie@gmail.com'
+          || request.resource.data.to == request.auth.token.email
         );
     }
 
@@ -24,6 +67,17 @@ service cloud.firestore {
       match /wishQuiz/{quizId} {
         allow read, write: if isOwner(userId) || isAdmin();
       }
+
+      match /inviteRequests/{requestId} {
+        allow read: if isOwner(userId) || isAdmin();
+        allow create, update: if (isOwner(userId) && validInviteRequest(userId)) || isAdmin();
+        allow delete: if isAdmin();
+      }
+    }
+
+    match /mail/{mailId} {
+      allow create: if signedIn() && validInviteMail();
+      allow read, update, delete: if isAdmin();
     }
 
     match /public/{document=**} {

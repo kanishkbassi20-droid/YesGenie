@@ -20,7 +20,11 @@
 		"rewrites": [
 			{ "source": "/active-itineraries", "destination": "/active-itineraries.html" },
 			{ "source": "/admin", "destination": "/admin.html" },
+			{ "source": "/admin-user", "destination": "/admin-user.html" },
 			{ "source": "/bir-experience", "destination": "/bir-experience.html" },
+			{ "source": "/himachal-expedition", "destination": "/himachal-expedition.html" },
+			{ "source": "/kasauli-himachal", "destination": "/kasauli-himachal.html" },
+			{ "source": "/patnitop-jammu", "destination": "/patnitop-jammu.html" },
 			{ "source": "/dashboard", "destination": "/dashboard.html" },
 			{ "source": "/login", "destination": "/login.html" },
 			{ "source": "/privacy-policy", "destination": "/privacy-policy.html" },
@@ -34,5 +38,8 @@
 	"firestore": {
 		"rules": "firestore.rules",
 		"indexes": "firestore.indexes.json"
+	},
+	"extensions": {
+		"firestore-send-email": "firebase/firestore-send-email@0.2.9"
 	}
 }

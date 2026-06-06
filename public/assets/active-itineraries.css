@@ -11,6 +11,7 @@
 	--shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
 	--container: min(1040px, calc(100% - 40px));
 	--radius: 8px;
+	--nav-h: 76px;
 	--ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
@@ -30,10 +31,12 @@ body {
 
 html {
 	scroll-behavior: smooth;
+	scroll-padding-top: calc(var(--nav-h) + 18px);
 }
 
 body {
 	margin: 0;
+	padding-top: var(--nav-h);
 	font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 	color: var(--text);
 	background:
@@ -68,17 +71,24 @@ a {
 	text-decoration: none;
 }
 
+button {
+	font: inherit;
+	color: inherit;
+}
+
 .container {
 	width: var(--container);
 	margin: 0 auto;
 }
 
 .nav {
-	position: sticky;
+	position: fixed;
 	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
 	z-index: 80;
 	width: var(--container);
-	min-height: 76px;
+	min-height: var(--nav-h);
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
@@ -87,6 +97,7 @@ a {
 	border-bottom: 1px solid var(--line);
 	background: rgba(7, 10, 17, 0.82);
 	backdrop-filter: blur(18px);
+	box-shadow: 0 18px 56px rgba(0, 0, 0, 0.22);
 }
 
 .brand {
@@ -232,7 +243,7 @@ h1 {
 
 .itinerary-grid {
 	display: grid;
-	grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.55fr);
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 16px;
 	align-items: stretch;
 }
@@ -244,18 +255,37 @@ h1 {
 	box-shadow: var(--shadow);
 	overflow: hidden;
 	display: grid;
-	grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1fr);
+	grid-template-columns: 1fr;
 }
 
 .itinerary-card--soon {
 	display: block;
+	grid-column: 1 / -1;
 }
 
 .itinerary-card__media {
-	min-height: 360px;
+	min-height: 260px;
 	background:
 		linear-gradient(180deg, rgba(7, 10, 17, 0.08), rgba(7, 10, 17, 0.5)),
 		url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&h=1100&fit=crop&auto=format&q=78") center / cover;
+}
+
+.itinerary-card--expedition .itinerary-card__media {
+	background:
+		linear-gradient(180deg, rgba(7, 10, 17, 0.08), rgba(7, 10, 17, 0.58)),
+		url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1100&h=900&fit=crop&auto=format&q=82") center / cover;
+}
+
+.itinerary-card--kasauli .itinerary-card__media {
+	background:
+		linear-gradient(180deg, rgba(7, 10, 17, 0.08), rgba(7, 10, 17, 0.54)),
+		url("https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1100&h=900&fit=crop&auto=format&q=82") center / cover;
+}
+
+.itinerary-card--patnitop .itinerary-card__media {
+	background:
+		linear-gradient(180deg, rgba(7, 10, 17, 0.08), rgba(7, 10, 17, 0.56)),
+		url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1100&h=900&fit=crop&auto=format&q=82") center / cover;
 }
 
 .itinerary-card__content {
@@ -286,7 +316,7 @@ h1 {
 h2 {
 	margin: 16px 0 0;
 	font-family: "Cormorant Garamond", Georgia, serif;
-	font-size: 3.4rem;
+	font-size: clamp(2.5rem, 4.8vw, 3.4rem);
 	line-height: 0.98;
 	letter-spacing: 0;
 }
@@ -348,10 +378,11 @@ h2 {
 @media (max-width: 560px) {
 	:root {
 		--container: calc(100% - 20px);
+		--nav-h: 66px;
 	}
 
 	.nav {
-		min-height: 66px;
+		min-height: var(--nav-h);
 	}
 
 	.brand__plate {
@@ -362,10 +393,6 @@ h2 {
 	.nav nav {
 		gap: 12px;
 		font-size: 0.72rem;
-	}
-
-	.nav nav a:nth-child(2) {
-		display: none;
 	}
 
 	.hero {
@@ -388,5 +415,20 @@ h2 {
 
 	.itinerary-card__content {
 		padding: 18px;
+	}
+}
+
+/* Full-bleed header polish */
+.nav {
+	left: 0;
+	right: 0;
+	transform: none;
+	width: 100%;
+	padding-inline: max(20px, calc((100vw - 1040px) / 2));
+}
+
+@media (max-width: 560px) {
+	.nav {
+		padding-inline: 10px;
 	}
 }

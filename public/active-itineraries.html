@@ -6,7 +6,7 @@
 		<title>Active Trips | YesGenie</title>
 		<meta
 			name="description"
-			content="Explore active YesGenie group trips, including the Bir Experience and upcoming curated departures."
+			content="Explore active YesGenie group trips, including Kasauli, Patnitop, Bir, and the Ultimate High-Altitude Himachal Expedition."
 		/>
 		<meta name="theme-color" content="#070a11" />
 		<link rel="icon" type="image/png" href="assets/favicon.png?v=20260518" />
@@ -18,7 +18,9 @@
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="assets/consent.css?v=20260523" />
-		<link rel="stylesheet" href="assets/active-itineraries.css?v=20260523-legal" />
+		<link rel="stylesheet" href="assets/active-itineraries.css?v=20260606-destinations" />
+		<link rel="stylesheet" href="assets/invite-request.css?v=20260606-phone-prompt" />
+		<link rel="stylesheet" href="assets/genie-guide.css?v=20260524-chatbot" />
 	</head>
 	<body>
 		<header class="nav">
@@ -29,9 +31,7 @@
 			</a>
 			<nav aria-label="Primary">
 				<a href="/">Home</a>
-				<a href="/bir-experience">Bir Experience</a>
 				<a href="/dashboard">Dashboard</a>
-				<a href="/admin" data-admin-link hidden>Admin</a>
 				<a href="/login">Login</a>
 			</nav>
 		</header>
@@ -46,7 +46,7 @@
 							Browse live YesGenie experiences that are ready to explore, shortlist, and discuss with the team.
 						</p>
 					</div>
-					<a class="hero__cta" href="/bir-experience">View Bir Edition</a>
+					<a class="hero__cta" href="/kasauli-himachal">View Kasauli Experience</a>
 				</div>
 			</section>
 
@@ -68,8 +68,73 @@
 								<span>Make a Wish</span>
 							</div>
 							<div class="actions">
+								<button class="btn btn--primary" type="button" data-invite-trip="bir-experience">Request Invite</button>
 								<a class="btn btn--primary" href="/bir-experience">Open Itinerary</a>
-								<a class="btn btn--ghost" href="/bir-experience#quiz">Take Quiz</a>
+							</div>
+						</div>
+					</article>
+
+					<article class="itinerary-card itinerary-card--expedition">
+						<div class="itinerary-card__media" aria-hidden="true"></div>
+						<div class="itinerary-card__content">
+							<div class="status">Now Active</div>
+							<h2>Ultimate High-Altitude Himachal Expedition</h2>
+							<p>
+								Delhi to Raison, Jispa, Shinku La, Keylong, Solang Valley, Manali, and back to Delhi across
+								5 Nights / 6 Days of hosted high-altitude adventure.
+							</p>
+							<div class="chips" aria-label="Highlights">
+								<span>5N / 6D</span>
+								<span>Raison</span>
+								<span>Shinku La</span>
+								<span>Solang</span>
+							</div>
+							<div class="actions">
+								<button class="btn btn--primary" type="button" data-invite-trip="himachal-expedition">Request Invite</button>
+								<a class="btn btn--primary" href="/himachal-expedition">Open Itinerary</a>
+								<a class="btn btn--ghost" href="/himachal-expedition#packing">Packing List</a>
+							</div>
+						</div>
+					</article>
+
+					<article class="itinerary-card itinerary-card--kasauli">
+						<div class="itinerary-card__media" aria-hidden="true"></div>
+						<div class="itinerary-card__content">
+							<div class="status">Now Active</div>
+							<h2>Kasauli, Himachal</h2>
+							<p>
+								Three days of slow mornings, stranger walks, sunset painting, music, gratitude, and mountain clarity.
+							</p>
+							<div class="chips" aria-label="Highlights">
+								<span>3 Days</span>
+								<span>Sunset Painting</span>
+								<span>Stranger Walks</span>
+								<span>Genie Hosted</span>
+							</div>
+							<div class="actions">
+								<button class="btn btn--primary" type="button" data-invite-trip="kasauli-himachal">Request Invite</button>
+								<a class="btn btn--primary" href="/kasauli-himachal">View Experience</a>
+							</div>
+						</div>
+					</article>
+
+					<article class="itinerary-card itinerary-card--patnitop">
+						<div class="itinerary-card__media" aria-hidden="true"></div>
+						<div class="itinerary-card__content">
+							<div class="status">Now Active</div>
+							<h2>Patnitop, Jammu</h2>
+							<p>
+								A polished three-day mountain framework for fresh air, scenic exploration, new friendships, and reflection.
+							</p>
+							<div class="chips" aria-label="Highlights">
+								<span>3 Days</span>
+								<span>Mountain Air</span>
+								<span>Connection</span>
+								<span>Flexible Framework</span>
+							</div>
+							<div class="actions">
+								<button class="btn btn--primary" type="button" data-invite-trip="patnitop-jammu">Request Invite</button>
+								<a class="btn btn--primary" href="/patnitop-jammu">View Experience</a>
 							</div>
 						</div>
 					</article>
@@ -101,8 +166,11 @@
 		</footer>
 		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-app-compat.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-auth-compat.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore-compat.js"></script>
 		<script src="assets/firebase-config.js?v=20260523"></script>
 		<script src="assets/consent.js?v=20260523" defer></script>
-		<script src="assets/nav-auth.js?v=20260523" defer></script>
+		<script src="assets/nav-auth.js?v=20260526-admin-route" defer></script>
+		<script src="assets/invite-request.js?v=20260606-phone-prompt" defer></script>
+		<script src="assets/genie-guide.js?v=20260524-chatbot" defer></script>
 	</body>
 </html>

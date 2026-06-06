@@ -70,6 +70,32 @@
 		});
 	});
 
+	const tripCards = $$(".trip-portal-card");
+	const coarsePointer = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
+	tripCards.forEach((card) => {
+		card.addEventListener("pointermove", (event) => {
+			if (prefersReducedMotion) return;
+			const rect = card.getBoundingClientRect();
+			const x = ((event.clientX - rect.left) / Math.max(1, rect.width)) * 100;
+			const y = ((event.clientY - rect.top) / Math.max(1, rect.height)) * 100;
+			card.style.setProperty("--cursor-x", `${x.toFixed(2)}%`);
+			card.style.setProperty("--cursor-y", `${y.toFixed(2)}%`);
+		});
+
+		card.addEventListener("pointerleave", () => {
+			card.style.removeProperty("--cursor-x");
+			card.style.removeProperty("--cursor-y");
+		});
+
+		if (!coarsePointer) return;
+		card.addEventListener("click", (event) => {
+			if (card.classList.contains("is-active")) return;
+			event.preventDefault();
+			tripCards.forEach((item) => item.classList.toggle("is-active", item === card));
+		});
+	});
+
 	if (!prefersReducedMotion) {
 		const revealEls = $$("[data-reveal]");
 		const observer = new IntersectionObserver(
@@ -242,8 +268,6 @@
 				setWishStatus("Login or sign up to save your wish securely.", "error");
 				return;
 			}
-			homePromptDismissed = true;
-			hideHomePrompt();
 			setWishFormEnabled(true);
 			try {
 				await loadSavedWish(user);
@@ -279,53 +303,6 @@
 		"Turning wishlists into hosted group journeys...",
 		"Finding your people before the trip begins...",
 	];
-
-	const homePrompt = $("#homePrompt");
-	const homePromptClose = $("#homePromptClose");
-	const homePromptScreen = $(".home-prompt__screen");
-	const promptNow = new URLSearchParams(window.location.search).get("prompt") === "1";
-	let homePromptTimer = 0;
-	let homePromptDismissed = false;
-
-	const hideHomePrompt = () => {
-		if (!homePrompt) return;
-		homePrompt.classList.remove("is-open");
-		homePrompt.setAttribute("aria-hidden", "true");
-		document.body.dataset.promptOpen = "false";
-	};
-
-	const showHomePrompt = () => {
-		window.clearTimeout(homePromptTimer);
-		homePromptTimer = 0;
-		if (!homePrompt || homePromptDismissed) return;
-		homePrompt.classList.add("is-open");
-		homePrompt.setAttribute("aria-hidden", "false");
-		document.body.dataset.promptOpen = "true";
-	};
-
-	const scheduleHomePrompt = () => {
-		if (!homePrompt || homePromptDismissed) return;
-		homePromptTimer = window.setTimeout(showHomePrompt, promptNow ? 700 : 10000);
-	};
-
-	homePromptClose?.addEventListener("click", () => {
-		homePromptDismissed = true;
-		hideHomePrompt();
-	});
-
-	homePrompt?.addEventListener("click", (event) => {
-		if (event.target !== homePromptScreen) return;
-		homePromptDismissed = true;
-		hideHomePrompt();
-	});
-
-	window.addEventListener("keydown", (event) => {
-		if (event.key !== "Escape" || !homePrompt?.classList.contains("is-open")) return;
-		homePromptDismissed = true;
-		hideHomePrompt();
-	});
-
-	window.addEventListener("beforeunload", () => window.clearTimeout(homePromptTimer));
 
 	const startTypingEffect = () => {
 		if (!typingText || prefersReducedMotion) return;
@@ -364,6 +341,5 @@
 	};
 
 	initWishQuiz();
-	scheduleHomePrompt();
 	startTypingEffect();
 })();

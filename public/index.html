@@ -30,8 +30,10 @@
 			rel="stylesheet"
 		/>
 
-		<link rel="stylesheet" href="assets/styles.css?v=20260523-wish-dashboard" />
+		<link rel="stylesheet" href="assets/styles.css?v=20260606-trips-expansion" />
 		<link rel="stylesheet" href="assets/consent.css?v=20260523" />
+		<link rel="stylesheet" href="assets/invite-request.css?v=20260606-phone-prompt" />
+		<link rel="stylesheet" href="assets/genie-guide.css?v=20260524-chatbot" />
 	</head>
 	<body>
 		<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
@@ -45,18 +47,14 @@
 				</a>
 
 				<nav class="nav-links" aria-label="Primary navigation">
-					<a href="#why">Why YesGenie</a>
-					<a href="#guaranteed">Guaranteed Departures</a>
 					<a href="#featured">Trips</a>
-					<a href="#wish-quiz">Make a Wish</a>
+					<a href="#wish-quiz">Wish</a>
 					<a href="/dashboard">Dashboard</a>
-					<a href="/admin" data-admin-link hidden>Admin</a>
 					<a href="/login">Login</a>
 				</nav>
 
 				<div class="nav-actions">
 					<a class="btn btn--ghost nav-actions__desktop" href="/active-itineraries">Active Trips</a>
-					<a class="btn btn--primary nav-actions__desktop" href="#featured">Explore Trips</a>
 					<button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" id="navToggle">
 						<span></span><span></span><span></span>
 					</button>
@@ -66,16 +64,12 @@
 
 		<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
 			<nav class="mobile-menu__links" aria-label="Mobile navigation">
-				<a href="#why">Why YesGenie</a>
-				<a href="#guaranteed">Guaranteed Departures</a>
-				<a href="#age-groups">Age-Specific Tours</a>
-				<a href="#featured">Featured Trips</a>
-				<a href="#wish-quiz">Make a Wish</a>
+				<a href="#featured">Trips</a>
+				<a href="#wish-quiz">Wish</a>
 				<a href="/dashboard">Dashboard</a>
-				<a href="/admin" data-admin-link hidden>Admin</a>
 				<a href="/login">Login</a>
 			</nav>
-			<a class="btn btn--primary" href="#featured">Explore Trips</a>
+			<a class="btn btn--primary" href="/active-itineraries">Active Trips</a>
 		</div>
 
 		<main>
@@ -231,57 +225,138 @@
 					<div class="section-head">
 						<div>
 							<div class="eyebrow" data-reveal>Featured Trips</div>
-							<h2 class="section-title" data-reveal>Journeys ready for your next yes.</h2>
+							<h2 class="section-title" data-reveal>Step into the trip before it begins.</h2>
 						</div>
 						<p class="section-copy" data-reveal>
-							Atmospheric routes, active communities, and itineraries designed for people who want more than a
-							checklist.
+							Each YesGenie experience is shaped around people, emotion, movement, and the quiet moments that
+							make strangers feel familiar.
 						</p>
 					</div>
 
-					<div class="trip-grid">
-						<article
-							class="trip-card trip-card--large"
-							data-reveal
-							style="--trip-img: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1400&h=900&fit=crop&auto=format&q=80')"
+					<div class="trip-showcase" data-reveal>
+						<a
+							class="trip-portal-card trip-portal-card--wide"
+							href="/kasauli-himachal"
+							aria-label="View Kasauli, Himachal experience"
+							style="--trip-img: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1600&h=1100&fit=crop&auto=format&q=82')"
 						>
-							<div class="trip-card__content">
-								<div class="trip-card__top">
-									<span>Now Active</span>
+							<img
+								class="trip-portal-card__image"
+								src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1600&h=1100&fit=crop&auto=format&q=82"
+								alt=""
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="trip-portal-card__cursor" aria-hidden="true"></span>
+							<span class="trip-portal-card__mist" aria-hidden="true"></span>
+							<span class="trip-portal-card__particles" aria-hidden="true"></span>
+							<span class="trip-portal-card__content">
+								<span class="trip-portal-card__meta">
+									<span>Kasauli, Himachal</span>
+									<span>3 Days</span>
+								</span>
+								<strong>Kasauli, Himachal</strong>
+								<span class="trip-portal-card__hook">
+									Slow mornings, stranger walks, sunset painting and mountain clarity.
+								</span>
+								<span class="trip-portal-card__reveal">
+									<span class="btn btn--primary">View Experience</span>
+								</span>
+							</span>
+						</a>
+
+						<a
+							class="trip-portal-card"
+							href="/patnitop-jammu"
+							aria-label="View Patnitop, Jammu experience"
+							style="--trip-img: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1200&h=1500&fit=crop&auto=format&q=82')"
+						>
+							<img
+								class="trip-portal-card__image"
+								src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1200&h=1500&fit=crop&auto=format&q=82"
+								alt=""
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="trip-portal-card__cursor" aria-hidden="true"></span>
+							<span class="trip-portal-card__mist" aria-hidden="true"></span>
+							<span class="trip-portal-card__particles" aria-hidden="true"></span>
+							<span class="trip-portal-card__content">
+								<span class="trip-portal-card__meta">
+									<span>Patnitop, Jammu</span>
+									<span>3 Days</span>
+								</span>
+								<strong>Patnitop, Jammu</strong>
+								<span class="trip-portal-card__hook">
+									Fresh mountain air, new friendships and moments that stay with you.
+								</span>
+								<span class="trip-portal-card__reveal">
+									<span class="btn btn--primary">View Experience</span>
+								</span>
+							</span>
+						</a>
+
+						<a
+							class="trip-portal-card"
+							href="/bir-experience"
+							aria-label="View Bir Experience"
+							style="--trip-img: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&h=1500&fit=crop&auto=format&q=80')"
+						>
+							<img
+								class="trip-portal-card__image"
+								src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&h=1500&fit=crop&auto=format&q=80"
+								alt=""
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="trip-portal-card__cursor" aria-hidden="true"></span>
+							<span class="trip-portal-card__mist" aria-hidden="true"></span>
+							<span class="trip-portal-card__particles" aria-hidden="true"></span>
+							<span class="trip-portal-card__content">
+								<span class="trip-portal-card__meta">
+									<span>Bir Experience</span>
 									<span>4 Days</span>
-								</div>
-								<h3>Bir Experience</h3>
-								<p>Paragliding, cafes, creativity, mountain quiet, music, and a hosted group that opens naturally.</p>
-								<div class="trip-card__actions">
-									<a class="btn btn--primary" href="/bir-experience">Open Itinerary</a>
-									<a class="btn btn--glass" href="/login?mode=create">Join Waitlist</a>
-								</div>
-							</div>
-						</article>
+								</span>
+								<strong>Bir Experience</strong>
+								<span class="trip-portal-card__hook">
+									Paragliding, cafes, creativity and conversations that open naturally.
+								</span>
+								<span class="trip-portal-card__reveal">
+									<span class="btn btn--primary">View Experience</span>
+								</span>
+							</span>
+						</a>
 
-						<article
-							class="trip-card"
-							data-reveal
-							style="transition-delay: 80ms; --trip-img: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=900&h=1100&fit=crop&auto=format&q=80')"
+						<a
+							class="trip-portal-card trip-portal-card--tall"
+							href="/himachal-expedition"
+							aria-label="View High-Altitude Himachal Expedition"
+							style="--trip-img: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=1600&fit=crop&auto=format&q=82')"
 						>
-							<div class="trip-card__content">
-								<div class="trip-card__top"><span>Coming Soon</span><span>6 Days</span></div>
-								<h3>Ladakh Road Arc</h3>
-								<p>High-altitude drives, monastery mornings, bonfire nights, and cinematic group moments.</p>
-							</div>
-						</article>
-
-						<article
-							class="trip-card"
-							data-reveal
-							style="transition-delay: 160ms; --trip-img: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&h=1100&fit=crop&auto=format&q=80')"
-						>
-							<div class="trip-card__content">
-								<div class="trip-card__top"><span>Coming Soon</span><span>5 Days</span></div>
-								<h3>Island Reset</h3>
-								<p>Warm beaches, slow mornings, water adventures, and community-led sunset rituals.</p>
-							</div>
-						</article>
+							<img
+								class="trip-portal-card__image"
+								src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=1600&fit=crop&auto=format&q=82"
+								alt=""
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="trip-portal-card__cursor" aria-hidden="true"></span>
+							<span class="trip-portal-card__mist" aria-hidden="true"></span>
+							<span class="trip-portal-card__particles" aria-hidden="true"></span>
+							<span class="trip-portal-card__content">
+								<span class="trip-portal-card__meta">
+									<span>High-Altitude Himachal</span>
+									<span>5N / 6D</span>
+								</span>
+								<strong>High-Altitude Himachal Expedition</strong>
+								<span class="trip-portal-card__hook">
+									River air, snowline roads, valley camps and a hosted mountain arc.
+								</span>
+								<span class="trip-portal-card__reveal">
+									<span class="btn btn--primary">View Experience</span>
+								</span>
+							</span>
+						</a>
 					</div>
 				</div>
 			</section>
@@ -402,7 +477,6 @@
 					<a href="#featured">Featured Trips</a>
 					<a href="#wish-quiz">Make a Wish</a>
 					<a href="/dashboard">Dashboard</a>
-					<a href="/admin" data-admin-link hidden>Admin</a>
 					<a href="/login">Login</a>
 					<a href="/privacy-policy">Privacy Policy</a>
 					<a href="/terms-and-conditions">Terms & Conditions</a>
@@ -415,38 +489,14 @@
 
 		<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-		<section class="home-prompt" id="homePrompt" aria-hidden="true" aria-label="YesGenie member prompt">
-			<div class="home-prompt__screen" aria-hidden="true"></div>
-			<div class="home-prompt__card" role="dialog" aria-modal="false" aria-labelledby="homePromptTitle">
-				<button class="home-prompt__close" type="button" id="homePromptClose" aria-label="Close prompt"></button>
-				<div class="home-lamp" aria-hidden="true">
-					<span class="home-lamp__smoke home-lamp__smoke--one"></span>
-					<span class="home-lamp__smoke home-lamp__smoke--two"></span>
-					<span class="home-lamp__body"></span>
-					<span class="home-lamp__spout"></span>
-					<span class="home-lamp__handle"></span>
-					<span class="home-lamp__base"></span>
-				</div>
-				<div class="home-prompt__copy">
-					<span>Member access</span>
-					<h2 id="homePromptTitle">Your travel wish is waiting.</h2>
-					<p>
-						Login now or sign up to save trip interests, join waitlists, and keep your next YesGenie departure close.
-					</p>
-				</div>
-				<div class="home-prompt__actions">
-					<a class="btn btn--primary" href="/login">Login Now</a>
-					<a class="btn btn--ghost" href="/login?mode=create">Sign Up</a>
-				</div>
-			</div>
-		</section>
-
 		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-app-compat.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-auth-compat.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore-compat.js"></script>
 		<script src="assets/firebase-config.js?v=20260523"></script>
 		<script src="assets/consent.js?v=20260523" defer></script>
-		<script src="assets/nav-auth.js?v=20260523" defer></script>
-		<script src="assets/app.js?v=20260523-wish-dashboard" defer></script>
+		<script src="assets/nav-auth.js?v=20260526-admin-route" defer></script>
+		<script src="assets/app.js?v=20260606-trips-expansion" defer></script>
+		<script src="assets/invite-request.js?v=20260606-phone-prompt" defer></script>
+		<script src="assets/genie-guide.js?v=20260524-chatbot" defer></script>
 	</body>
 </html>
