@@ -18,7 +18,8 @@
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="assets/consent.css?v=20260523" />
-		<link rel="stylesheet" href="assets/dashboard.css?v=20260523" />
+		<link rel="stylesheet" href="assets/dashboard.css?v=20260606-inline-edit" />
+		<link rel="stylesheet" href="assets/genie-guide.css?v=20260524-chatbot" />
 	</head>
 	<body>
 		<header class="dashboard-nav">
@@ -29,9 +30,8 @@
 			</a>
 			<nav aria-label="Dashboard navigation">
 				<a href="/">Home</a>
-				<a href="/active-itineraries">Active Trips</a>
-				<a href="/#wish-quiz">Make a Wish</a>
-				<a href="/admin" data-admin-link hidden>Admin</a>
+				<a href="/active-itineraries">Trips</a>
+				<a href="/#wish-quiz">Wish</a>
 				<a href="/login" data-auth-link>Login</a>
 			</nav>
 		</header>
@@ -106,12 +106,27 @@
 
 		<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+		<div class="edit-modal is-hidden" id="editModal" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
+			<div class="edit-modal__screen" data-edit-cancel></div>
+			<form class="edit-modal__card" id="editForm">
+				<button class="edit-modal__close" type="button" aria-label="Close editor" data-edit-cancel></button>
+				<span class="edit-modal__eyebrow" id="editModalEyebrow">Edit Detail</span>
+				<h2 id="editModalTitle">Update detail</h2>
+				<div class="edit-modal__field" id="editFieldSlot"></div>
+				<div class="edit-modal__actions">
+					<button class="btn btn--primary" id="editSaveBtn" type="submit">Save</button>
+					<button class="btn btn--ghost" type="button" data-edit-cancel>Cancel</button>
+				</div>
+			</form>
+		</div>
+
 		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-app-compat.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-auth-compat.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore-compat.js"></script>
 		<script src="assets/firebase-config.js?v=20260523"></script>
 		<script src="assets/consent.js?v=20260523" defer></script>
-		<script src="assets/nav-auth.js?v=20260523" defer></script>
-		<script src="assets/dashboard.js?v=20260523" defer></script>
+		<script src="assets/nav-auth.js?v=20260606-single-admin" defer></script>
+		<script src="assets/dashboard.js?v=20260606-inline-edit" defer></script>
+		<script src="assets/genie-guide.js?v=20260524-chatbot" defer></script>
 	</body>
 </html>

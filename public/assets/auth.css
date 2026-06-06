@@ -570,6 +570,27 @@ input:focus-visible {
 	gap: 13px;
 }
 
+.auth-divider {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+	gap: 12px;
+	margin: 14px 0;
+	color: rgba(248, 251, 255, 0.5);
+	font-size: 0.76rem;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+	content: "";
+	height: 1px;
+	background: rgba(255, 255, 255, 0.14);
+}
+
 .field {
 	display: grid;
 	gap: 8px;
@@ -732,6 +753,32 @@ body[data-auth-engaged="true"] .auth-state__dot {
 	color: var(--text);
 	background: rgba(255, 255, 255, 0.08);
 	border-color: var(--line);
+}
+
+.btn--google {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	color: var(--text);
+	background: rgba(255, 255, 255, 0.1);
+	border-color: rgba(255, 255, 255, 0.2);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.btn--google span {
+	width: 24px;
+	height: 24px;
+	border-radius: 999px;
+	display: inline-grid;
+	place-items: center;
+	background: #fff;
+	color: #1f1f1f;
+	font-weight: 900;
+}
+
+.btn--google:hover {
+	background: rgba(255, 255, 255, 0.14);
+	border-color: rgba(18, 174, 232, 0.42);
 }
 
 .signed-in-panel {
@@ -1097,6 +1144,7 @@ body[data-mode="login"] .field--confirm {
 }
 
 body[data-mode="reset"] .field--name,
+body[data-mode="reset"] .field--mobile,
 body[data-mode="reset"] .field--password,
 body[data-mode="reset"] .field--confirm,
 body[data-mode="reset"] .field--session,

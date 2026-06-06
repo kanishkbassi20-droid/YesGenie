@@ -155,15 +155,37 @@
 
 	const getWishField = (name) => wishForm?.elements?.[name];
 
-	const setWishFieldValue = (name, value) => {
+	const setWishFieldValue = (name, value, { overwrite = true } = {}) => {
 		const field = getWishField(name);
 		if (!field || value === undefined || value === null) return;
+		if (!overwrite && String(field.value || "").trim()) return;
 		field.value = String(value);
 	};
 
 	const normalizeInstagram = (value) => {
 		const clean = String(value || "").trim().replace(/^@+/, "");
 		return clean ? `@${clean}` : "";
+	};
+
+	const applyProfileToWishForm = (profile = {}, user = null) => {
+		const profileName = profile.name || profile.displayName || user?.displayName || "";
+		setWishFieldValue("name", profileName, { overwrite: false });
+		setWishFieldValue("phoneNumber", profile.phoneNumber, { overwrite: false });
+		setWishFieldValue("cityOfWork", profile.cityOfWork, { overwrite: false });
+		setWishFieldValue("occupation", profile.occupation, { overwrite: false });
+		setWishFieldValue("instagramId", profile.instagramId, { overwrite: false });
+		setWishFieldValue("gender", profile.gender, { overwrite: false });
+		setWishFieldValue("yearOfBirth", profile.yearOfBirth, { overwrite: false });
+	};
+
+	const applyWishToForm = (data = {}) => {
+		setWishFieldValue("name", data.name);
+		setWishFieldValue("gender", data.gender);
+		setWishFieldValue("yearOfBirth", data.yearOfBirth);
+		setWishFieldValue("phoneNumber", data.phoneNumber);
+		setWishFieldValue("instagramId", data.instagramId);
+		setWishFieldValue("cityOfWork", data.cityOfWork);
+		setWishFieldValue("occupation", data.occupation);
 	};
 
 	const getWishPayload = () => {
@@ -207,21 +229,17 @@
 
 	const loadSavedWish = async (user) => {
 		if (!db || !wishForm || !user) return;
-		const snap = await db.collection("users").doc(user.uid).collection("wishQuiz").doc("current").get();
+		const userRef = db.collection("users").doc(user.uid);
+		const [profileSnap, snap] = await Promise.all([userRef.get(), userRef.collection("wishQuiz").doc("current").get()]);
+		const profile = profileSnap.exists ? profileSnap.data() || {} : {};
+		applyProfileToWishForm(profile, user);
 		if (snap.exists) {
 			const data = snap.data() || {};
-			setWishFieldValue("name", data.name);
-			setWishFieldValue("gender", data.gender);
-			setWishFieldValue("yearOfBirth", data.yearOfBirth);
-			setWishFieldValue("phoneNumber", data.phoneNumber);
-			setWishFieldValue("instagramId", data.instagramId);
-			setWishFieldValue("cityOfWork", data.cityOfWork);
-			setWishFieldValue("occupation", data.occupation);
+			applyWishToForm(data);
 			setWishStatus("Your saved wish is loaded. You can update it anytime.", "success");
 			return;
 		}
-		if (user.displayName) setWishFieldValue("name", user.displayName);
-		setWishStatus("You are signed in. Complete the form to save your wish.", "success");
+		setWishStatus("Your profile details are prefilled. Complete anything missing to save your wish.", "success");
 	};
 
 	const saveWish = async () => {

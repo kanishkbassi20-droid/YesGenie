@@ -18,7 +18,8 @@
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="assets/consent.css?v=20260523" />
-		<link rel="stylesheet" href="assets/auth.css?v=20260523-legal-consent" />
+		<link rel="stylesheet" href="assets/auth.css?v=20260606-google-mobile" />
+		<link rel="stylesheet" href="assets/genie-guide.css?v=20260524-chatbot" />
 	</head>
 	<body>
 		<main class="auth-page">
@@ -72,6 +73,11 @@
 							<input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
 						</label>
 
+						<label class="field field--mobile" for="phoneNumber">
+							<span>Mobile Number</span>
+							<input id="phoneNumber" name="phoneNumber" type="tel" placeholder="+91 98765 43210" autocomplete="tel" />
+						</label>
+
 						<label class="field field--password" for="password">
 							<span>Password</span>
 							<input
@@ -116,6 +122,12 @@
 						<button class="btn btn--primary" id="submitBtn" type="submit">Login</button>
 					</form>
 
+					<div class="auth-divider" id="authDivider"><span>or</span></div>
+					<button class="btn btn--google" id="googleSignInBtn" type="button">
+						<span aria-hidden="true">G</span>
+						Continue with Google
+					</button>
+
 					<div class="signed-in-panel is-hidden" id="signedInPanel">
 						<div>
 							<div class="signed-in-panel__label">Signed in</div>
@@ -156,6 +168,7 @@
 		<script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore-compat.js"></script>
 		<script src="assets/firebase-config.js?v=20260523"></script>
 		<script src="assets/consent.js?v=20260523" defer></script>
-		<script src="assets/auth.js?v=20260523-legal-consent" defer></script>
+		<script src="assets/auth.js?v=20260606-google-mobile" defer></script>
+		<script src="assets/genie-guide.js?v=20260524-chatbot" defer></script>
 	</body>
 </html>
