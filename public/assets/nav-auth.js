@@ -1,36 +1,61 @@
 (() => {
 	"use strict";
 
-	const profileLabel = (user) => {
-		const fallback = String(user?.email || "Profile").split("@")[0];
-		const name = String(user?.displayName || fallback).trim();
-		return name ? `Profile: ${name}` : "Profile";
-	};
-
 	const adminEmails = () =>
 		(window.YESGENIE_ADMIN_EMAILS || []).map((email) => String(email || "").trim().toLowerCase()).filter(Boolean);
 
 	const isAdminEmail = (email) => adminEmails().includes(String(email || "").trim().toLowerCase());
 
+	const rememberOriginal = (link) => {
+		if (!link.dataset.originalHref) link.dataset.originalHref = link.getAttribute("href") || "";
+		if (!link.dataset.originalText) link.dataset.originalText = link.textContent || "";
+	};
+
 	const updateLinks = (user) => {
 		const signedIn = Boolean(user);
-		document.querySelectorAll('a[href="/login"], [data-auth-link]').forEach((link) => {
+		const admin = signedIn && isAdminEmail(user?.email);
+		let adminLinkClaimed = false;
+
+		document.querySelectorAll('a[href="/login"], a[href="/dashboard"], a[href="/admin"], [data-auth-link]').forEach((link) => {
 			if (!(link instanceof HTMLAnchorElement)) return;
+			rememberOriginal(link);
+			const originalHref = link.dataset.originalHref || "";
+			const startedAsLogin = originalHref === "/login" || link.hasAttribute("data-auth-link");
+			const startedAsDashboard = originalHref === "/dashboard";
+			const startedAsAdmin = originalHref === "/admin";
+			link.hidden = false;
+
 			if (signedIn) {
-				link.href = "/dashboard";
-				link.textContent = profileLabel(user);
+				if (admin && (startedAsLogin || startedAsAdmin) && !adminLinkClaimed) {
+					link.href = "/admin";
+					link.textContent = "Admin";
+					link.setAttribute("aria-label", "Open YesGenie admin dashboard");
+					adminLinkClaimed = true;
+				} else if (admin && (startedAsLogin || startedAsAdmin)) {
+					link.hidden = true;
+				} else if (startedAsDashboard) {
+					link.href = "/dashboard";
+					link.textContent = "Dashboard";
+					link.setAttribute("aria-label", "Open your YesGenie dashboard");
+				} else {
+					link.href = "/dashboard";
+					link.textContent = startedAsLogin ? "Profile" : "Dashboard";
+					link.setAttribute("aria-label", "Open your YesGenie dashboard");
+				}
 				link.classList.add("is-profile-link");
-				link.setAttribute("aria-label", "Open your YesGenie dashboard");
 			} else {
-				link.href = "/login";
-				link.textContent = "Login";
+				link.href = originalHref || "/login";
+				link.textContent = link.dataset.originalText || "Login";
 				link.classList.remove("is-profile-link");
 				link.removeAttribute("aria-label");
+				link.hidden = link.hasAttribute("data-admin-link");
 			}
 		});
 
 		document.querySelectorAll("[data-admin-link]").forEach((link) => {
-			link.toggleAttribute("hidden", !signedIn || !isAdminEmail(user?.email));
+			const showStandaloneAdmin = signedIn && admin && !adminLinkClaimed;
+			link.toggleAttribute("hidden", !showStandaloneAdmin);
+			if (showStandaloneAdmin) adminLinkClaimed = true;
 		});
 	};
 
